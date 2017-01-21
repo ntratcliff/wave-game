@@ -78,7 +78,7 @@ public class waveButtonScript : MonoBehaviour {
             {
                 increaseForce = false;
                 decreaseForce = true;
-                water.AddForce(inputForce, ((14 * 5) / 3));
+                water.AddForce(inputForce, water.NumNodes / 3);
                 /*   inputForce--;
                    if (inputForce < 0)
                    {
@@ -121,7 +121,7 @@ public class waveButtonScript : MonoBehaviour {
                 Debug.Log("Adding the force");
                 increaseForce = false;
                 decreaseForce = true;
-                water.AddForce(inputForce, ((14 * 5) / 3) * 2);
+                water.AddForce(inputForce, water.NumNodes / 3 * 2);
                 /*
                 inputForce--;
                 if (inputForce < 0)

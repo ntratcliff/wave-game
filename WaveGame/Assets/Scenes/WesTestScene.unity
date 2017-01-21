@@ -135,6 +135,36 @@ Prefab:
       propertyPath: mesh
       value: 
       objectReference: {fileID: 299311334}
+    - target: {fileID: 114519783170026944, guid: fcb86421ca94a8443b699c96e9868799,
+        type: 2}
+      propertyPath: damping
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114519783170026944, guid: fcb86421ca94a8443b699c96e9868799,
+        type: 2}
+      propertyPath: spread
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 114519783170026944, guid: fcb86421ca94a8443b699c96e9868799,
+        type: 2}
+      propertyPath: numNodes
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114519783170026944, guid: fcb86421ca94a8443b699c96e9868799,
+        type: 2}
+      propertyPath: waterWidth
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114519783170026944, guid: fcb86421ca94a8443b699c96e9868799,
+        type: 2}
+      propertyPath: waterLeft
+      value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114519783170026944, guid: fcb86421ca94a8443b699c96e9868799,
+        type: 2}
+      propertyPath: waterTop
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcb86421ca94a8443b699c96e9868799, type: 2}
   m_IsPrefabParent: 0

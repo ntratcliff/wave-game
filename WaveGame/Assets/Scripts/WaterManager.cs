@@ -30,7 +30,7 @@ public class WaterManager : MonoBehaviour
     public float waterWidth = 14;
     public float waterTop = 0;
     public float waterBottom = -6;
-    public int numNodeMultiplier = 5;
+    public int numNodes = 50;
 
     // Use this for initialization
     void Start ()
@@ -104,7 +104,7 @@ public class WaterManager : MonoBehaviour
 
     public void SpawnWater(float left, float width, float top, float bottom)
     {
-        int edgeCount = Mathf.RoundToInt(width) * numNodeMultiplier;
+        int edgeCount = numNodes;
         int nodecount = edgeCount + 1;
 
         body = gameObject.AddComponent<LineRenderer>();
@@ -164,5 +164,13 @@ public class WaterManager : MonoBehaviour
     {
         Debug.Log("Force " + force + " on node " + node);
         accelerations[node] += force;
+    }
+
+    public int NumNodes
+    {
+        get
+        {
+            return numNodes;
+        }
     }
 }
