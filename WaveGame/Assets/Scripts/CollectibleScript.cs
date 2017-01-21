@@ -20,7 +20,7 @@ public class CollectibleScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //speed = Random.Range(lowerRangeSpeed, higherRangeSpeed);
-        y = Mathf.PerlinNoise(Time.time + Random.Range(2.0f, 5.0f), 0) * 5;
+        y = Mathf.PerlinNoise(Time.time + Random.Range(-2.0f, 2.0f), 0) * 4;
         transform.position = new Vector3(transform.position.x, y, transform.position.z);
         didCollide = false;
         isMoving = false;
@@ -40,7 +40,7 @@ public class CollectibleScript : MonoBehaviour {
 	}
 
     //score implementation
-   void OnTriggerEnter(Collider other)
+   void OnTriggerEnter2D(Collider2D other)
     {
         didCollide = true;
         isMoving = false;
