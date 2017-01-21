@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boat : MonoBehaviour {
+public class BoatScript : MonoBehaviour {
 
     public GameObject wave;
     public float mass = 5;
@@ -27,11 +27,11 @@ public class Boat : MonoBehaviour {
     void Update () {
         //string message = "Force Mag: <color=red>" + forceMag.ToString() + "</color>";
         //Debug.Log(message);
-        forceMag /= mass;
-        force = forceDir * forceMag;
-        accel = force;
+        //forceMag /= mass;
+        //force = forceDir * forceMag;
+        //accel = force;
 
-        transform.position += vel * Time.deltaTime;
-        vel += accel * Time.deltaTime;
+        //transform.position += vel * Time.deltaTime;
+        //vel += accel * Time.deltaTime;
     }
 }
