@@ -40,6 +40,14 @@ public class WaterManager : MonoBehaviour
         }
     }
 
+    public int NumNodes
+    {
+        get
+        {
+            return numNodes;
+        }
+    }
+
     // Use this for initialization
     void Awake ()
     {
@@ -172,13 +180,5 @@ public class WaterManager : MonoBehaviour
     {
         Debug.Log("Force " + force + " on node " + node);
         positions[node].y = force;
-    }
-
-    public int NumNodes
-    {
-        get
-        {
-            return numNodes;
-        }
     }
 }
