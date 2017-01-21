@@ -57,10 +57,6 @@ public class WaterManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            positions[positions.Length / 2].y = 3;
-        }
         for (int i = 0; i < meshes.Length; i++)
         {
             Vector3[] verts = { new Vector3(positions[i].x, positions[i].y, z),

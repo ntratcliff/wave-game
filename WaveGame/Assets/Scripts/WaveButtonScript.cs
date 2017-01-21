@@ -105,7 +105,7 @@ public class WaveButtonScript : MonoBehaviour {
                     this.transform.localScale += new Vector3(0.01f, 0, 0.01f);
                 }
 
-                water.AddForce(inputForceP1 / 2, minLeftNode);//water.NumNodes / 3);
+                water.AddForce(inputForceP1 / 2, minLeftNode - 1);//water.NumNodes / 3);
             }
             else
             {
@@ -140,7 +140,7 @@ public class WaveButtonScript : MonoBehaviour {
 
                 }
 
-                water.AddForce(inputForceP2 / 2, minRightNode);// water.NumNodes / 3 * 2);
+                water.AddForce(inputForceP2 / 2, minRightNode + 1);// water.NumNodes / 3 * 2);
             }
             else 
             {
