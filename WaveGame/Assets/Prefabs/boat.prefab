@@ -93,7 +93,7 @@ MonoBehaviour:
   initPos: {x: 0, y: 0}
   initVel: {x: 0, y: 0}
   initAccel: {x: 0, y: 0}
-  nodeDifference: 6
+  nodeDifference: 4
 --- !u!212 &212222601805788388
 SpriteRenderer:
   m_ObjectHideFlags: 1
