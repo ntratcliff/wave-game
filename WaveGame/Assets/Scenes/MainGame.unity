@@ -97,6 +97,30 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1220090692}
   m_Script: {fileID: 11500000, guid: 3496b8e215c0e3040aa5011465cd48cb, type: 3}
+--- !u!1 &67554344 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1271838364447340, guid: 657534f8c2fe6144fb13f6bc1dacec39,
+    type: 2}
+  m_PrefabInternal: {fileID: 292447331}
+--- !u!114 &67554345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67554344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86b5e91fa3f65a94bb77cae172a64533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxCap: 0
+  minCap: 0
+  scaleForce: 0
+  increaseForce: 0
+  decreaseForce: 0
+  playerNum: 0
+  inputForceP1: 0
+  inputForceP2: 0
 --- !u!1001 &292447331
 Prefab:
   m_ObjectHideFlags: 0
@@ -146,7 +170,8 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114905631982296076, guid: 657534f8c2fe6144fb13f6bc1dacec39, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 657534f8c2fe6144fb13f6bc1dacec39, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &905537618
@@ -230,6 +255,7 @@ MonoBehaviour:
   initPos: {x: 0, y: 0}
   initVel: {x: 0, y: 0}
   initAccel: {x: 0, y: 0}
+  nodeDifference: 6
 --- !u!1001 &1220090692
 Prefab:
   m_ObjectHideFlags: 0
@@ -301,7 +327,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4771215288873028, guid: 6df5e0e72e504b346b1f8850b98f5a29, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 9.14
       objectReference: {fileID: 0}
     - target: {fileID: 4771215288873028, guid: 6df5e0e72e504b346b1f8850b98f5a29, type: 2}
       propertyPath: m_LocalPosition.y
@@ -336,6 +362,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b769f205ca4e97b4fa96221e393c6670, type: 2}
+    - target: {fileID: 1167395083578800, guid: 6df5e0e72e504b346b1f8850b98f5a29, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6df5e0e72e504b346b1f8850b98f5a29, type: 2}
   m_IsPrefabParent: 0
@@ -344,6 +374,30 @@ GameObject:
   m_PrefabParentObject: {fileID: 1167395083578800, guid: 6df5e0e72e504b346b1f8850b98f5a29,
     type: 2}
   m_PrefabInternal: {fileID: 1297239743}
+--- !u!1 &1496750003 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1271838364447340, guid: 657534f8c2fe6144fb13f6bc1dacec39,
+    type: 2}
+  m_PrefabInternal: {fileID: 1953231294}
+--- !u!114 &1496750004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1496750003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86b5e91fa3f65a94bb77cae172a64533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxCap: 0
+  minCap: 0
+  scaleForce: 0
+  increaseForce: 0
+  decreaseForce: 0
+  playerNum: 0
+  inputForceP1: 0
+  inputForceP2: 0
 --- !u!1 &1564901324
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,6 +410,7 @@ GameObject:
   - component: {fileID: 1564901327}
   - component: {fileID: 1564901326}
   - component: {fileID: 1564901325}
+  - component: {fileID: 1564901330}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -431,6 +486,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1564901330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1564901324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6d4281e5d7cd44d8c6e38bc2c1b8d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 0
+  intensity: 0.018
+  chromaticAberration: 0
+  axialAberration: 0.5
+  blur: 0.193
+  blurSpread: 0.75
+  luminanceDependency: 0.25
+  blurDistance: 2.5
+  vignetteShader: {fileID: 4800000, guid: 627943dc7a9a74286b70a4f694a0acd5, type: 3}
+  separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
+  chromAberrationShader: {fileID: 4800000, guid: 2b4f29398d9484ccfa9fd220449f5eee,
+    type: 3}
 --- !u!1001 &1953231294
 Prefab:
   m_ObjectHideFlags: 0
@@ -489,6 +567,7 @@ Prefab:
       propertyPath: playerNum
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114905631982296076, guid: 657534f8c2fe6144fb13f6bc1dacec39, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 657534f8c2fe6144fb13f6bc1dacec39, type: 2}
   m_IsPrefabParent: 0
