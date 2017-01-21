@@ -2,30 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class collectibleScript : MonoBehaviour {
+public class CollectibleScript : MonoBehaviour {
 
     public float y;
     public float speed;
     public float lowerRangeX; //-3 to 3 seems to be the best current one
     public float higherRangeX;
-    public float lowerRangeSpeed;
-    public float higherRangeSpeed; //recommmend to cap this at 0.2
+    //    public float lowerRangeSpeed;
+    //    public float higherRangeSpeed; //recommmend to cap this at 4.
+    //public float speed;
 
+    public float perlinFreq;
+
+    public bool isMoving;
     public bool didCollide;
 
 	// Use this for initialization
 	void Start () {
-        speed = Random.Range(lowerRangeSpeed, higherRangeSpeed);
-        y = Random.Range( lowerRangeX, higherRangeX);
+        //speed = Random.Range(lowerRangeSpeed, higherRangeSpeed);
+        y = Mathf.PerlinNoise(Time.time + Random.Range(2.0f, 5.0f), 0) * 5;
         transform.position = new Vector3(transform.position.x, y, transform.position.z);
         didCollide = false;
-
+        isMoving = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 speedAdjust = new Vector3(speed * Time.deltaTime, 0, 0);
-        transform.position -= speedAdjust;
+        if (isMoving)
+        {
+            Vector3 speedAdjust = new Vector3(speed * Time.deltaTime, 0, 0);
+            //    y = Mathf.PerlinNoise(Time.time, 0) * 3;
+            //   transform.position = new Vector3(transform.position.x, y, transform.position.z);
+            transform.position -= speedAdjust;
+        }
+        
         //need way to mess with 
 	}
 
@@ -33,5 +43,7 @@ public class collectibleScript : MonoBehaviour {
    void OnTriggerEnter(Collider other)
     {
         didCollide = true;
+        isMoving = false;
+        transform.position = new Vector3(10, transform.position.y, transform.position.z);
     }
 }

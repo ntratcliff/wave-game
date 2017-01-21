@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class scoreScript : MonoBehaviour {
+public class ScoreScript : MonoBehaviour {
 
     public static int score;
     Text text;
