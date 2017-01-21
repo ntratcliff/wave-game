@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class waveButtonScript : MonoBehaviour {
+public class WaveButtonScript : MonoBehaviour {
 
 
     //Control values for player input buttons
@@ -15,27 +15,40 @@ public class waveButtonScript : MonoBehaviour {
         Player_2
     };
 
+    public  float maxCap;
+    public float minCap;
+    public float scaleForce;
+
     [HideInInspector]
     public bool increaseForce;
     [HideInInspector]
     public bool decreaseForce;
     public PlayerNum playerNum;
-    private float inputForce;
+    public float inputForceP1;
+    public float inputForceP2;
     private bool hoveredOver;
     WaterManager water;
-    public float InputForce
+    public float InputForceP1
     {
         get
         {
-            return inputForce;
+            return inputForceP1;
         }
     }
-        
-	// Use this for initialization
-	void Start () {
+    public float InputForceP2
+    {
+        get
+        {
+            return inputForceP2;
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
         //setting the initial values for player input buttons
         hoveredOver = false;
-        inputForce = 0;
+        inputForceP1 = 0;
+        inputForceP2 = 0;
         water = GameObject.FindGameObjectWithTag("Water").GetComponent<WaterManager>();
 
         if (!water)
@@ -52,87 +65,72 @@ public class waveButtonScript : MonoBehaviour {
         if (playerNum == PlayerNum.Player_1)
         {
 
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftAlt))
             {
 
                 increaseForce = true;
                 decreaseForce = false;
-            //    if (hoveredOver)
-            //   {
-            /*
-                    inputForce++;
-                    if (inputForce > 100)
-                    {
-                        inputForce = 100;
-                    }
-                    if (inputForce != 100)
-                    {
-                        this.transform.localScale += new Vector3(0.01f, 0, 0.01f);
-
-                    }
-                    */
-            //    }
+                inputForceP1 += scaleForce * Time.deltaTime;
+                if (inputForceP1 > maxCap)
+                {
+                    inputForceP1 = maxCap;
+                }
+                if (inputForceP1 != maxCap)
+                {
+                    this.transform.localScale += new Vector3(0.01f, 0, 0.01f);
+                }
 
             }
-            else if(Input.GetKeyUp(KeyCode.LeftShift))
+            else if(Input.GetKeyUp(KeyCode.LeftAlt))
             {
                 increaseForce = false;
                 decreaseForce = true;
-                water.AddForce(inputForce, water.NumNodes / 3);
-                /*   inputForce--;
-                   if (inputForce < 0)
-                   {
-                       inputForce = 0;
-                   }
-                   if (inputForce != 0)
-                   {
-                       this.transform.localScale -= new Vector3(0.01f, 0, 0.01f);
-                   }
-                   */
+                water.AddForce(inputForceP1, water.NumNodes / 3);
+                inputForceP1 -= scaleForce* Time.deltaTime;
+                if (inputForceP1 < minCap)
+                {
+                    inputForceP1 = minCap;
+                }
+                if (inputForceP1 != minCap)
+                {
+                    this.transform.localScale -= new Vector3(0.01f, 0, 0.01f);
+                }
             }
 
         }
         if (playerNum == PlayerNum.Player_2)
         {
 
-            if (Input.GetKey(KeyCode.RightShift))
+            if (Input.GetKey(KeyCode.RightAlt))
             {
 
-                increaseForce = true;
-                decreaseForce = false;
-                /*
-              //  if (hoveredOver)
-              //  {
-                    inputForce++;
-                    if (inputForce > 100)
-                    {
-                        inputForce = 100;
-                    }
-                    if (inputForce != 100)
-                    {
-                        this.transform.localScale += new Vector3(0.01f, 0, 0.01f);
+                inputForceP2 += scaleForce * Time.deltaTime;
+                if (inputForceP2 > maxCap)
+                {
+                    inputForceP2 = maxCap;
+                }
+                if (inputForceP2 != maxCap)
+                {
+                    this.transform.localScale += new Vector3(0.01f, 0, 0.01f);
 
-                    }
-               // }*/
+                }
 
             }
-            else if(Input.GetKeyUp(KeyCode.RightShift))
+            else if(Input.GetKeyUp(KeyCode.RightAlt))
             {
                 Debug.Log("Adding the force");
                 increaseForce = false;
                 decreaseForce = true;
-                water.AddForce(inputForce, water.NumNodes / 3 * 2);
-                /*
-                inputForce--;
-                if (inputForce < 0)
+                water.AddForce(inputForceP2, water.NumNodes / 3 * 2);
+                inputForceP2-= scaleForce* Time.deltaTime;
+                if (inputForceP2 < minCap)
                 {
-                    inputForce = 0;
+                    inputForceP2 = minCap;
                 }
-                if (inputForce != 0)
+                if (inputForceP2 != minCap)
                 {
                     this.transform.localScale -= new Vector3(0.01f, 0, 0.01f);
                 }
-                */
             }
 
         }
@@ -143,21 +141,29 @@ public class waveButtonScript : MonoBehaviour {
         //Make it reset to 0 instantly?
 
         //Extreme ends capping - double check
-        if (inputForce < 0)
+        if (inputForceP1 < minCap)
         {
-            inputForce = 0;
+            inputForceP1 = minCap;
         }
-        if(inputForce > 100)
+        if(inputForceP1 > maxCap)
         {
-            inputForce = 100;
+            inputForceP1 = maxCap;
         }
-
+        if (inputForceP2 < minCap)
+        {
+            inputForceP2 = minCap;
+        }
+        if (inputForceP2 > maxCap)
+        {
+            inputForceP2 = maxCap;
+        }
         //Debugging line
         //print(gameObject.name + " force is " + inputForce);
-	}
-
+    }
+    /*
     void FixedUpdate()
     {
+        
         if (increaseForce)
         {
             inputForce++;
@@ -184,6 +190,7 @@ public class waveButtonScript : MonoBehaviour {
             }
         }
     }
+    */
     //Raycast hitting is boring
     void OnMouseOver()
     {

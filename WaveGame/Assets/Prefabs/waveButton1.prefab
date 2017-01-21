@@ -92,6 +92,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b5e91fa3f65a94bb77cae172a64533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxCap: 100
+  minCap: 0
+  scaleForce: 10
+  increaseForce: 0
+  decreaseForce: 0
+  playerNum: 0
+  inputForceP1: 0
+  inputForceP2: 0
 --- !u!136 &136878243340734498
 CapsuleCollider:
   m_ObjectHideFlags: 1
