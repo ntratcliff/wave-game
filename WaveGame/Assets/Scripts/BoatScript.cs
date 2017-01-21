@@ -26,6 +26,14 @@ public class BoatScript : MonoBehaviour
     float immunityFrames = 7;
     float immunityTimeLeft = 0;
 
+    public int Lives
+    {
+        get
+        {
+            return lives;
+        }
+    }
+
     // Use this for initialization
     void Start ()
     {
