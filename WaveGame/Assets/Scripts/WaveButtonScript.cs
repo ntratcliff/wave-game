@@ -28,6 +28,10 @@ public class WaveButtonScript : MonoBehaviour {
     public float inputForceP2;
     private bool hoveredOver;
     WaterManager water;
+
+    int minLeftNode = 0;
+    int minRightNode = 0;
+
     public float InputForceP1
     {
         get
@@ -55,6 +59,27 @@ public class WaveButtonScript : MonoBehaviour {
         {
             Debug.LogError("Can't find the water");
         }
+
+        float minLeftDist = int.MaxValue;
+        float minRightDist = int.MaxValue;
+        Camera cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+
+        for (int i = 0; i < water.Positions.Length; i++)
+        {
+            float dist = Mathf.Abs(cam.ViewportToWorldPoint(new Vector3(0, 0, 0)).x - water.Positions[i].x);
+            if (dist < minLeftDist)
+            {
+                minLeftDist = dist;
+                minLeftNode = i;
+            }
+
+            dist = Mathf.Abs(cam.ViewportToWorldPoint(new Vector3(1, 1, 0)).x - water.Positions[i].x);
+            if (dist < minRightDist)
+            {
+                minRightDist = dist;
+                minRightNode = i;
+            }
+        }
 	}
 	
 	// Update is called once per frame
@@ -80,7 +105,7 @@ public class WaveButtonScript : MonoBehaviour {
                     this.transform.localScale += new Vector3(0.01f, 0, 0.01f);
                 }
 
-                water.AddForce(inputForceP1, water.NumNodes / 3);
+                water.AddForce(inputForceP1, minLeftNode);
             }
             else if(Input.GetKeyUp(KeyCode.LeftAlt))
             {
@@ -115,7 +140,7 @@ public class WaveButtonScript : MonoBehaviour {
 
                 }
 
-                water.AddForce(inputForceP2, water.NumNodes / 3 * 2);
+                water.AddForce(inputForceP2, minRightNode);
             }
             else if(Input.GetKeyUp(KeyCode.RightAlt))
             {
