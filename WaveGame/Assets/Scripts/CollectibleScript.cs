@@ -6,8 +6,8 @@ public class CollectibleScript : MonoBehaviour {
 
     public float y;
     public float speed;
-    public float lowerRangeX; //-3 to 3 seems to be the best current one
-    public float higherRangeX;
+//    public float lowerRangeX; //-3 to 3 seems to be the best current one
+ //   public float higherRangeX;
     //    public float lowerRangeSpeed;
     //    public float higherRangeSpeed; //recommmend to cap this at 4.
     //public float speed;
@@ -17,12 +17,18 @@ public class CollectibleScript : MonoBehaviour {
     public bool isMoving;
     public bool didCollide;
 
+    public float noiseModifierRangeLow; //-2 default
+    public float noiseModifierRangeHigh; //2 default
+    public float heightMultiplier; //4 default
+    public float minHeight;
+    public float maxHeight;
+
 	// Use this for initialization
 	void Start () {
 
         scoreboard = FindObjectOfType<Scoreboard>();
         //speed = Random.Range(lowerRangeSpeed, higherRangeSpeed);
-        y = Mathf.PerlinNoise(Time.time + Random.Range(-2.0f, 2.0f), 0) * 4;
+        y = minHeight + (Mathf.PerlinNoise(Time.time + Random.Range(noiseModifierRangeLow, noiseModifierRangeHigh), 0) )* (heightMultiplier - maxHeight);
         transform.position = new Vector3(transform.position.x, y, transform.position.z);
         didCollide = false;
         isMoving = false;
@@ -41,12 +47,19 @@ public class CollectibleScript : MonoBehaviour {
         //need way to mess with 
 	}
 
+    public void rerollHeight()
+    {
+        y = Mathf.PerlinNoise(Time.time + Random.Range(noiseModifierRangeLow, noiseModifierRangeHigh), 0) * heightMultiplier;
+    }
     //score implementation
-   void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         didCollide = true;
         isMoving = false;
         transform.position = new Vector3(10, transform.position.y, transform.position.z);
+        rerollHeight();
         scoreboard.AddPoint();
     }
+
+    
 }

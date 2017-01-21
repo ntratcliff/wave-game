@@ -49,6 +49,7 @@ public class GameManagerScript : MonoBehaviour {
         {
             timeCounter = 0;
             newStart = collectibles[collCounter].transform.position;
+            collectibles[collCounter].GetComponent<CollectibleScript>().rerollHeight();
             collectibles[collCounter].transform.position = new Vector3(10, newStart.y, newStart.z);
             sendNextTime = Random.Range(lowerRangeSeconds, higherRangeSeconds);
             //         print(collectibles[2].GetComponent<CollectibleScript>().speed);
@@ -61,6 +62,7 @@ public class GameManagerScript : MonoBehaviour {
             if (collCounter >= collectibles.Count)
             {
                 collCounter = 0;
+                
             }
         }
         timeCounter += Time.deltaTime;
