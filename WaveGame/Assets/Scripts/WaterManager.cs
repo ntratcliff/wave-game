@@ -32,8 +32,16 @@ public class WaterManager : MonoBehaviour
     public float waterBottom = -6;
     public int numNodeMultiplier = 5;
 
+    public Vector2[] Positions
+    {
+        get
+        {
+            return positions;
+        }
+    }
+
     // Use this for initialization
-    void Start ()
+    void Awake ()
     {
         SpawnWater(waterLeft, waterWidth, waterTop, waterBottom);
 	}
