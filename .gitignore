@@ -17,6 +17,8 @@ sysinfo.txt
 *.unityproj
 *.booproj
 *.swp
+*.sln
+
 
 #GIT generated
 *.orig

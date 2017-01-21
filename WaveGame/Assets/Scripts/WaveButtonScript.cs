@@ -105,13 +105,13 @@ public class WaveButtonScript : MonoBehaviour {
                     this.transform.localScale += new Vector3(0.01f, 0, 0.01f);
                 }
 
-                water.AddForce(inputForceP1, minLeftNode);
+                water.AddForce(inputForceP1 / 2, minLeftNode);//water.NumNodes / 3);
             }
-            else if(Input.GetKeyUp(KeyCode.LeftAlt))
+            else
             {
                 increaseForce = false;
                 decreaseForce = true;
-                inputForceP1 -= scaleForce* Time.deltaTime;
+                inputForceP1 = 0; //-= scaleForce* Time.deltaTime;
                 if (inputForceP1 < minCap)
                 {
                     inputForceP1 = minCap;
@@ -140,14 +140,14 @@ public class WaveButtonScript : MonoBehaviour {
 
                 }
 
-                water.AddForce(inputForceP2, minRightNode);
+                water.AddForce(inputForceP2 / 2, minRightNode);// water.NumNodes / 3 * 2);
             }
-            else if(Input.GetKeyUp(KeyCode.RightAlt))
+            else 
             {
                 Debug.Log("Adding the force");
                 increaseForce = false;
                 decreaseForce = true;
-                inputForceP2-= scaleForce* Time.deltaTime;
+                inputForceP2 = 0;//-= scaleForce * Time.deltaTime;
                 if (inputForceP2 < minCap)
                 {
                     inputForceP2 = minCap;
