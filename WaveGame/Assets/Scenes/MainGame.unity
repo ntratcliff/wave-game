@@ -244,6 +244,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114905631982296076, guid: 657534f8c2fe6144fb13f6bc1dacec39,
+        type: 2}
+      propertyPath: maxCap
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 657534f8c2fe6144fb13f6bc1dacec39, type: 2}
   m_IsPrefabParent: 0
@@ -349,21 +354,6 @@ Prefab:
       propertyPath: mesh
       value: 
       objectReference: {fileID: 1297239744}
-    - target: {fileID: 114519783170026944, guid: fcb86421ca94a8443b699c96e9868799,
-        type: 2}
-      propertyPath: mat
-      value: 
-      objectReference: {fileID: 2100000, guid: b769f205ca4e97b4fa96221e393c6670, type: 2}
-    - target: {fileID: 114519783170026944, guid: fcb86421ca94a8443b699c96e9868799,
-        type: 2}
-      propertyPath: waterTop
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114519783170026944, guid: fcb86421ca94a8443b699c96e9868799,
-        type: 2}
-      propertyPath: damping
-      value: 0.06
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcb86421ca94a8443b699c96e9868799, type: 2}
   m_IsPrefabParent: 0
@@ -800,6 +790,11 @@ Prefab:
         type: 2}
       propertyPath: playerNum
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114905631982296076, guid: 657534f8c2fe6144fb13f6bc1dacec39,
+        type: 2}
+      propertyPath: maxCap
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 657534f8c2fe6144fb13f6bc1dacec39, type: 2}
