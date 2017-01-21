@@ -289,6 +289,11 @@ Prefab:
       propertyPath: decreaseForce
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23787982271098566, guid: 657534f8c2fe6144fb13f6bc1dacec39,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 657534f8c2fe6144fb13f6bc1dacec39, type: 2}
   m_IsPrefabParent: 0
@@ -344,6 +349,11 @@ Prefab:
     - target: {fileID: 114905631982296076, guid: 657534f8c2fe6144fb13f6bc1dacec39,
         type: 2}
       propertyPath: decreaseForce
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23787982271098566, guid: 657534f8c2fe6144fb13f6bc1dacec39,
+        type: 2}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

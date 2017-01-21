@@ -174,7 +174,7 @@ public class WaterManager : MonoBehaviour
 
     public void AddForce(float force, int node)
     {
-        Debug.Log("Force " + force + " on node " + node);
+        //Debug.Log("Force " + force + " on node " + node);
         positions[node].y = force;
     }
 }
