@@ -13,12 +13,14 @@ public class CollectibleScript : MonoBehaviour {
     //public float speed;
 
     public float perlinFreq;
-
+    private Scoreboard scoreboard;
     public bool isMoving;
     public bool didCollide;
 
 	// Use this for initialization
 	void Start () {
+
+        scoreboard = FindObjectOfType<Scoreboard>();
         //speed = Random.Range(lowerRangeSpeed, higherRangeSpeed);
         y = Mathf.PerlinNoise(Time.time + Random.Range(-2.0f, 2.0f), 0) * 4;
         transform.position = new Vector3(transform.position.x, y, transform.position.z);
@@ -45,5 +47,6 @@ public class CollectibleScript : MonoBehaviour {
         didCollide = true;
         isMoving = false;
         transform.position = new Vector3(10, transform.position.y, transform.position.z);
+        scoreboard.AddPoint();
     }
 }

@@ -159,6 +159,8 @@ GameObject:
   - component: {fileID: 905537620}
   - component: {fileID: 905537619}
   - component: {fileID: 905537621}
+  - component: {fileID: 905537622}
+  - component: {fileID: 905537623}
   m_Layer: 0
   m_Name: boat
   m_TagString: Untagged
@@ -231,6 +233,40 @@ MonoBehaviour:
   initVel: {x: 0, y: 0}
   initAccel: {x: 0, y: 0}
   nodeDifference: 6
+--- !u!58 &905537622
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 905537618}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0.358423}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!50 &905537623
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 905537618}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1220090692
 Prefab:
   m_ObjectHideFlags: 0
@@ -349,6 +385,64 @@ GameObject:
   m_PrefabParentObject: {fileID: 1167395083578800, guid: 6df5e0e72e504b346b1f8850b98f5a29,
     type: 2}
   m_PrefabInternal: {fileID: 1297239743}
+--- !u!1001 &1464959231
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4008248130114930, guid: e1898fdf585236b488a762743ba56287, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.2600918
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008248130114930, guid: e1898fdf585236b488a762743ba56287, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.027589798
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008248130114930, guid: e1898fdf585236b488a762743ba56287, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -3.2793756
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008248130114930, guid: e1898fdf585236b488a762743ba56287, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008248130114930, guid: e1898fdf585236b488a762743ba56287, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008248130114930, guid: e1898fdf585236b488a762743ba56287, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008248130114930, guid: e1898fdf585236b488a762743ba56287, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008248130114930, guid: e1898fdf585236b488a762743ba56287, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114677934892059738, guid: e1898fdf585236b488a762743ba56287,
+        type: 2}
+      propertyPath: collectibleGod
+      value: 
+      objectReference: {fileID: 1720660178761072, guid: cb322e1c3bb8a5c408ae159286a4b8f0,
+        type: 2}
+    - target: {fileID: 114677934892059738, guid: e1898fdf585236b488a762743ba56287,
+        type: 2}
+      propertyPath: lowerRangeSeconds
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114677934892059738, guid: e1898fdf585236b488a762743ba56287,
+        type: 2}
+      propertyPath: higherRangeSeconds
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: e1898fdf585236b488a762743ba56287, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1564901324
 GameObject:
   m_ObjectHideFlags: 0
