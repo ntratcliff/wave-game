@@ -26,10 +26,10 @@ public class WaterManager : MonoBehaviour
     public Material mat;
     public GameObject mesh;
 
-    public float waterLeft;
-    public float waterWidth;
-    public float waterTop;
-    public float waterBottom;
+    public float waterLeft = -7;
+    public float waterWidth = 14;
+    public float waterTop = 0;
+    public float waterBottom = -6;
     public int numNodeMultiplier = 5;
 
     // Use this for initialization
@@ -43,7 +43,7 @@ public class WaterManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            positions[positions.Length / 2].y = 100;
+            positions[positions.Length / 2].y = 3;
         }
         for (int i = 0; i < meshes.Length; i++)
         {
@@ -61,9 +61,10 @@ public class WaterManager : MonoBehaviour
         for (int i = 0; i < positions.Length; i++)
         {
             float force = springConstant * (positions[i].y - baseHeight) + velocities[i] * damping;
-            accelerations[i] = -force;
+            //accelerations[i] = Mathf.Clamp(accelerations[i], -force, 1);
             positions[i].y += velocities[i];
             velocities[i] += accelerations[i];
+            accelerations[i] = -force;
             body.SetPosition(i, new Vector3(positions[i].x, positions[i].y, z));
         }
 
@@ -157,5 +158,11 @@ public class WaterManager : MonoBehaviour
             meshObjects[i].GetComponent<MeshFilter>().mesh = meshes[i];
             meshObjects[i].transform.parent = transform;
         }
+    }
+
+    public void AddForce(float force, int node)
+    {
+        Debug.Log("Force " + force + " on node " + node);
+        accelerations[node] += force;
     }
 }

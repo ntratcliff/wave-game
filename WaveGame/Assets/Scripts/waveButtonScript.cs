@@ -9,11 +9,20 @@ public class waveButtonScript : MonoBehaviour {
     //Player 1 is left, Player 2 is right
     //Numbering handled in the scene
 
+    public enum PlayerNum
+    {
+        Player_1,
+        Player_2
+    };
+
+    [HideInInspector]
     public bool increaseForce;
+    [HideInInspector]
     public bool decreaseForce;
-    public float playerNum;
+    public PlayerNum playerNum;
     private float inputForce;
     private bool hoveredOver;
+    WaterManager water;
     public float InputForce
     {
         get
@@ -27,7 +36,12 @@ public class waveButtonScript : MonoBehaviour {
         //setting the initial values for player input buttons
         hoveredOver = false;
         inputForce = 0;
-		
+        water = GameObject.FindGameObjectWithTag("Water").GetComponent<WaterManager>();
+
+        if (!water)
+        {
+            Debug.LogError("Can't find the water");
+        }
 	}
 	
 	// Update is called once per frame
@@ -35,7 +49,7 @@ public class waveButtonScript : MonoBehaviour {
 
         //Scales based off of holding down currently. Can adjust for time once we start tinkering with it
 
-        if (playerNum == 1)
+        if (playerNum == PlayerNum.Player_1)
         {
 
             if (Input.GetKey(KeyCode.LeftShift))
@@ -60,24 +74,25 @@ public class waveButtonScript : MonoBehaviour {
             //    }
 
             }
-            else
+            else if(Input.GetKeyUp(KeyCode.LeftShift))
             {
                 increaseForce = false;
                 decreaseForce = true;
-             /*   inputForce--;
-                if (inputForce < 0)
-                {
-                    inputForce = 0;
-                }
-                if (inputForce != 0)
-                {
-                    this.transform.localScale -= new Vector3(0.01f, 0, 0.01f);
-                }
-                */
+                water.AddForce(inputForce, ((14 * 5) / 3));
+                /*   inputForce--;
+                   if (inputForce < 0)
+                   {
+                       inputForce = 0;
+                   }
+                   if (inputForce != 0)
+                   {
+                       this.transform.localScale -= new Vector3(0.01f, 0, 0.01f);
+                   }
+                   */
             }
 
         }
-        if (playerNum == 2)
+        if (playerNum == PlayerNum.Player_2)
         {
 
             if (Input.GetKey(KeyCode.RightShift))
@@ -101,10 +116,12 @@ public class waveButtonScript : MonoBehaviour {
                // }*/
 
             }
-            else
+            else if(Input.GetKeyUp(KeyCode.RightShift))
             {
+                Debug.Log("Adding the force");
                 increaseForce = false;
                 decreaseForce = true;
+                water.AddForce(inputForce, ((14 * 5) / 3) * 2);
                 /*
                 inputForce--;
                 if (inputForce < 0)
@@ -136,7 +153,7 @@ public class waveButtonScript : MonoBehaviour {
         }
 
         //Debugging line
-        print(gameObject.name + " force is " + inputForce);
+        //print(gameObject.name + " force is " + inputForce);
 	}
 
     void FixedUpdate()
