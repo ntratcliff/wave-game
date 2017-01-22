@@ -64,6 +64,8 @@ public class WaveButtonScript : MonoBehaviour {
 
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         currAspect = cam.aspect;
+
+        FindEdgeWaves();
 	}
 	
 	// Update is called once per frame
