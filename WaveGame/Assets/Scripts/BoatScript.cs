@@ -168,6 +168,7 @@ public class BoatScript : MonoBehaviour
 
             if (lives <= 0)
             {
+                immunityTimeLeft = 0;
                 gameManager.EndGame();
             }
             else
