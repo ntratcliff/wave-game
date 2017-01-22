@@ -21,6 +21,8 @@ public class BoatScript : MonoBehaviour
     [SerializeField]
     float deathForce = .25f;
     [SerializeField]
+    float deathTilt = 30;
+    [SerializeField]
     int lives = 3;
     [SerializeField]
     float immunityFrames = 7;
@@ -62,7 +64,10 @@ public class BoatScript : MonoBehaviour
         transform.right = diff;
         Vector2 offset = nextNode = middleNode;
 
-        if (((Vector2)transform.position - lastPos).magnitude >= deathForce && immunityTimeLeft <= 0)
+        float angle = Mathf.Acos(Vector3.Dot(transform.right, Vector3.right)) * Mathf.Rad2Deg;
+        float velocity = ((Vector2)transform.position - lastPos).magnitude;
+
+        if ((velocity >= deathForce || angle >= deathTilt) && immunityTimeLeft <= 0)
         {
             Debug.Log("You lost a life");
             --lives;
