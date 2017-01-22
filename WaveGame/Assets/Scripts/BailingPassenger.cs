@@ -12,13 +12,15 @@ public class BailingPassenger : MonoBehaviour
     public float torqueMax = 200;
     Rigidbody2D body;
     AudioSource audio;
+    Renderer renderer;
     public AudioClip[] screams;
 
     // Use this for initialization
-    void Start ()
+    void Awake ()
     {
         body = gameObject.GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
+        renderer = GetComponent<Renderer>();
 	}
 	
 	// Update is called once per frame
@@ -36,11 +38,12 @@ public class BailingPassenger : MonoBehaviour
         body.AddTorque(Random.Range(torqueMin, torqueMax));
         int randIndex = (int)Random.Range(0.0f, 2.0f);
         audio.PlayOneShot(screams[randIndex]);
-        //Debug.Log("Time to bail!");
     }
 
     public void Board()
     {
+        //renderer.sharedMaterial.SetColor("_Color", new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, 0));
+        //renderer.material.SetColor("_Color", new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, 0));
         body.gravityScale = 0;
         body.velocity = Vector3.zero;
         body.angularVelocity = 0;

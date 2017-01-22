@@ -28,6 +28,8 @@ public class WaveButtonScript : MonoBehaviour {
     public float inputForceP2;
     private bool hoveredOver;
     WaterManager water;
+    Camera cam;
+    float currAspect;
 
     int minLeftNode = 0;
     int minRightNode = 0;
@@ -60,30 +62,17 @@ public class WaveButtonScript : MonoBehaviour {
             Debug.LogError("Can't find the water");
         }
 
-        float minLeftDist = int.MaxValue;
-        float minRightDist = int.MaxValue;
-        Camera cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-
-        for (int i = 0; i < water.Positions.Length; i++)
-        {
-            float dist = Mathf.Abs(cam.ViewportToWorldPoint(new Vector3(0, 0, 0)).x - water.Positions[i].x);
-            if (dist < minLeftDist)
-            {
-                minLeftDist = dist;
-                minLeftNode = i;
-            }
-
-            dist = Mathf.Abs(cam.ViewportToWorldPoint(new Vector3(1, 1, 0)).x - water.Positions[i].x);
-            if (dist < minRightDist)
-            {
-                minRightDist = dist;
-                minRightNode = i;
-            }
-        }
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        currAspect = cam.aspect;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
+        if (cam.aspect != currAspect)
+        {
+            FindEdgeWaves();
+        }
 
         //Scales based off of holding down currently. Can adjust for time once we start tinkering with it
 
@@ -231,4 +220,29 @@ public class WaveButtonScript : MonoBehaviour {
         hoveredOver = false;
     }
 
+    void FindEdgeWaves()
+    {
+        //Debug.Log("The window size changed");
+        float minLeftDist = int.MaxValue;
+        float minRightDist = int.MaxValue;
+
+        for (int i = 0; i < water.Positions.Length; i++)
+        {
+            float dist = Mathf.Abs(cam.ViewportToWorldPoint(new Vector3(0, 0, 0)).x - water.Positions[i].x);
+            if (dist < minLeftDist)
+            {
+                minLeftDist = dist;
+                minLeftNode = i;
+            }
+
+            dist = Mathf.Abs(cam.ViewportToWorldPoint(new Vector3(1, 1, 0)).x - water.Positions[i].x);
+            if (dist < minRightDist)
+            {
+                minRightDist = dist;
+                minRightNode = i;
+            }
+        }
+
+        currAspect = cam.aspect;
+    }
 }
