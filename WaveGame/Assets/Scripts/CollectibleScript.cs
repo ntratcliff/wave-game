@@ -17,6 +17,8 @@ public class CollectibleScript : MonoBehaviour {
     public bool isMoving;
     public bool didCollide;
 
+    public AudioSource sfx;
+
     public float noiseModifierRangeLow; //-2 default
     public float noiseModifierRangeHigh; //2 default
     public float heightMultiplier; //4 default
@@ -59,6 +61,7 @@ public class CollectibleScript : MonoBehaviour {
         transform.position = new Vector3(10, transform.position.y, transform.position.z);
         rerollHeight();
         scoreboard.AddPoint();
+        sfx.Play();
     }
 
     

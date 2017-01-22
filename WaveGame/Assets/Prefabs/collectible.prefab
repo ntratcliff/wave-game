@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212983394670231988}
   - component: {fileID: 114818523500961174}
   - component: {fileID: 58610820723276532}
+  - component: {fileID: 82298965237374098}
   m_Layer: 0
   m_Name: collectible
   m_TagString: Untagged
@@ -56,6 +57,86 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.23339844
+--- !u!82 &82298965237374098
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1720660178761072}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: bba2d6498ea994b47ab686ea3f7700a8, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114818523500961174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -69,11 +150,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   y: 0
   speed: 1
-  lowerRangeX: -3
-  higherRangeX: 3
   perlinFreq: 0.5
   isMoving: 0
   didCollide: 0
+  sfx: {fileID: 0}
+  noiseModifierRangeLow: 0
+  noiseModifierRangeHigh: 0
+  heightMultiplier: 0
+  minHeight: 0
+  maxHeight: 0
 --- !u!212 &212983394670231988
 SpriteRenderer:
   m_ObjectHideFlags: 1
