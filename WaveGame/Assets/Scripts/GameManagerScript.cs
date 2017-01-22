@@ -42,6 +42,7 @@ public class GameManagerScript : MonoBehaviour {
     public bool preGame = true;
     public Scoreboard score;
     public BoatScript boat;
+    public AudioSource audio;
     private bool firstLoop = true;
 
     // Use this for initialization
@@ -104,10 +105,16 @@ public class GameManagerScript : MonoBehaviour {
         cScript = GetComponent<CollectibleScript>();
 
         fader = GameObject.FindObjectOfType<Fading>();
+        audio = gameObject.GetComponent<AudioSource>();
 
         if (!fader)
         {
             Debug.LogError("Can't find the fader for the game manager");
+        }
+
+        if (!audio)
+        {
+            Debug.LogError("Can't find the audio source component on the game manager");
         }
 
         if (!startText)
@@ -141,6 +148,7 @@ public class GameManagerScript : MonoBehaviour {
         }
 
         RestartGame();
+        fader.FadeOut(scoreText, fadeOutTime);
     }
 
     // Update is called once per frame
@@ -232,7 +240,6 @@ public class GameManagerScript : MonoBehaviour {
     {
         fader.FadeIn(endText, fadeInTime);
         gameEnded = true;
-        Debug.Log("Fading in end text");
     }
 
     public void RestartGame()
@@ -248,6 +255,7 @@ public class GameManagerScript : MonoBehaviour {
         cloudSendNextTime = Random.Range(lowerCloudRangeSeconds, higherCloudRangeSeconds);
         sendNextTime = Random.Range(lowerRangeSeconds, higherRangeSeconds);
         score.Reset();
+        audio.PlayOneShot(audio.clip);
         Debug.Log("Fading out end text");
     }
 
@@ -256,6 +264,6 @@ public class GameManagerScript : MonoBehaviour {
         fader.FadeOut(startText, fadeOutTime);
         fader.FadeIn(scoreText, fadeInTime);
         preGame = false;
-        Debug.Log("Fading out start text");
+        audio.PlayOneShot(audio.clip);
     }
 }

@@ -20,7 +20,6 @@ public class Fading : MonoBehaviour
     public void FadeIn(GameObject text, float fadeTime)
     {
         StartCoroutine(FadeInTimed(text, fadeTime));
-        Debug.Log("This object is " + text.name);
     }
 
     IEnumerator FadeInTimed(GameObject text, float time)
