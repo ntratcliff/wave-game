@@ -74,7 +74,7 @@ public class CloudScript : MonoBehaviour
         transform.localScale = new Vector3(scaleBy, scaleBy, scaleBy);
 
         float zPos = zAnchor * (zMod * scaleBy);
-        transform.position = new Vector3(transform.position.x, zPos, transform.position.z);
+        GetComponent<SpriteRenderer>().sortingOrder = (int)zPos;        //transform.position = new Vector3(transform.position.x, zPos, transform.position.z);
 
         speed = vanillaSpeed * scaleBy + Random.Range(speedModMin,speedMonMax);
     }

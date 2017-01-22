@@ -116,3 +116,5 @@ MonoBehaviour:
   xMax: 200
   yMin: 100
   yMax: 500
+  torqueMin: 0
+  torqueMax: 0

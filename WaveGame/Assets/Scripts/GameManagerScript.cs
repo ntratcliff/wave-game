@@ -94,7 +94,7 @@ public class GameManagerScript : MonoBehaviour {
 
         cScript = GetComponent<CollectibleScript>();
 
-
+        
     }
 
     // Update is called once per frame
