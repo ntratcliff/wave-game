@@ -1003,6 +1003,41 @@ Prefab:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 502707237}
+    - target: {fileID: 212222601805788388, guid: 3745487c4263eea41a547ce0b2819667,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212222601805788388, guid: 3745487c4263eea41a547ce0b2819667,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212222601805788388, guid: 3745487c4263eea41a547ce0b2819667,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212222601805788388, guid: 3745487c4263eea41a547ce0b2819667,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212222601805788388, guid: 3745487c4263eea41a547ce0b2819667,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212222601805788388, guid: 3745487c4263eea41a547ce0b2819667,
+        type: 2}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212222601805788388, guid: 3745487c4263eea41a547ce0b2819667,
+        type: 2}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3745487c4263eea41a547ce0b2819667, type: 2}
   m_IsPrefabParent: 0

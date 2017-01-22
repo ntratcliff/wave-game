@@ -10,6 +10,7 @@ public class BailingPassenger : MonoBehaviour
     public float yMax = 300;
     public float torqueMin = -200;
     public float torqueMax = 200;
+    public float fadeTime = 2;
     Rigidbody2D body;
     AudioSource audio;
     Renderer renderer;
@@ -42,13 +43,24 @@ public class BailingPassenger : MonoBehaviour
 
     public void Board()
     {
-        //renderer.sharedMaterial.SetColor("_Color", new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, 0));
-        //renderer.material.SetColor("_Color", new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, 0));
+        renderer.material.color = new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, 0);
         body.gravityScale = 0;
         body.velocity = Vector3.zero;
         body.angularVelocity = 0;
-        //body.rotation = transform.parent.rotation.eulerAngles.z;
         transform.rotation = transform.parent.rotation;
-        //Debug.Log("Tring to board " + transform.parent.rotation.eulerAngles.z + " " + body.rotation);
+        StartCoroutine(FadePassengersIn());
+    }
+
+    IEnumerator FadePassengersIn()
+    {
+        float timePassed = 0;
+        while (timePassed < fadeTime)
+        {
+            renderer.material.color = new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, Mathf.Lerp(0, 1, timePassed / fadeTime));
+            timePassed += Time.deltaTime;
+            yield return null;
+        }
+
+        renderer.material.color = new Color(renderer.material.color.r, renderer.material.color.g, renderer.material.color.b, 1);
     }
 }
