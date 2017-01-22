@@ -42,6 +42,7 @@ public class GameManagerScript : MonoBehaviour {
     public bool preGame = true;
     public Scoreboard score;
     public BoatScript boat;
+    [HideInInspector]
     public AudioSource audio;
     private bool firstLoop = true;
 
