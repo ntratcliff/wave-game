@@ -613,9 +613,8 @@ MonoBehaviour:
   PanVolumeMax: 5
   PanVolumeMin: -20
   PanAbsoluteMin: -30
-  PlayerInputMin: 0
-  PlayerInputMax: 0.8
   MiddleVolumeMax: 8
   MiddleVolumeMin: -20
   WaterMiddleMin: -2
   WaterMiddleMax: 1
+  MiddleChannelSampleSize: 0

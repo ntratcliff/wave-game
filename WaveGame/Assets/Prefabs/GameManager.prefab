@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4008248130114930}
   - component: {fileID: 114677934892059738}
+  - component: {fileID: 114529377439373566}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -40,6 +41,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114529377439373566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1268401865670546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8617b5855eeee04a91d56eb1356cd33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114677934892059738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -51,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c042ef78f2e4164ea1a652f8f6171cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 0}
+  player1: {fileID: 1271838364447340, guid: 657534f8c2fe6144fb13f6bc1dacec39, type: 2}
   player2: {fileID: 0}
   audioManager: {fileID: 0}
   collectibleGod: {fileID: 1720660178761072, guid: cb322e1c3bb8a5c408ae159286a4b8f0,
@@ -70,7 +82,7 @@ MonoBehaviour:
   fader: {fileID: 0}
   startText: {fileID: 0}
   endText: {fileID: 0}
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 1670253336308582, guid: 4e44129e9c7a0714bbc3f360686cef9c, type: 2}
   fadeInTime: 2
   fadeOutTime: 2
   gameEnded: 0

@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1271838364447340}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
@@ -92,12 +92,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b5e91fa3f65a94bb77cae172a64533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxCap: 100
+  maxCap: 20
   minCap: 0
   scaleForce: 10
   increaseForce: 0
   decreaseForce: 0
-  playerNum: 0
+  playerNum: 1
   inputForceP1: 0
   inputForceP2: 0
 --- !u!136 &136878243340734498
@@ -108,7 +108,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1271838364447340}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
