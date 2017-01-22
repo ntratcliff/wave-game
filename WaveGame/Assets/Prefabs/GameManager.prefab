@@ -54,3 +54,16 @@ MonoBehaviour:
   player1: {fileID: 0}
   player2: {fileID: 0}
   audioManager: {fileID: 0}
+  collectibleGod: {fileID: 1720660178761072, guid: cb322e1c3bb8a5c408ae159286a4b8f0,
+    type: 2}
+  cloudGod: {fileID: 1797048090453840, guid: 4008e04395753e04d94529cfc5bb3d12, type: 2}
+  lowerRangeSeconds: 4
+  higherRangeSeconds: 6
+  lowerCloudRangeSeconds: 0
+  higherCloudRangeSeconds: 0
+  sendNextTime: 0
+  collCounter: 0
+  cloudCounter: 0
+  cloudSendNextTime: 0
+  collectibles: []
+  clouds: []
