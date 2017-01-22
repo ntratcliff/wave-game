@@ -64,9 +64,10 @@ public class GameManagerScript : MonoBehaviour {
         collectibles.Add(c5);
         collectibles.Add(c6);
 
+        
 
         cStart = Instantiate(collectibleGod);
-
+        cStart.GetComponent<CollectibleScript>().isMoving = false;
         GameObject cl1 = Instantiate(cloudGod);
         GameObject cl2 = Instantiate(cloudGod);
         GameObject cl3 = Instantiate(cloudGod);
@@ -188,15 +189,7 @@ public class GameManagerScript : MonoBehaviour {
             }
   
         }
-        if(sendFirstGem)
-        {
-            collectibles[collCounter].GetComponent<CollectibleScript>().rerollHeight();
-            newStart = collectibles[collCounter].transform.position;
-            collectibles[collCounter].transform.position = new Vector3(10, newStart.y, newStart.z);
-            cStart.GetComponent<CollectibleScript>().speed = cStart.GetComponent<CollectibleScript>().speed * .75f;
-            cStart.GetComponent<CollectibleScript>().isMoving = true;
-            sendFirstGem = false;
-        }
+
         firstLoop = false;
 
         //Cloud management software
@@ -229,8 +222,18 @@ public class GameManagerScript : MonoBehaviour {
             return;
         }
 
-       // GameObject c;
-		if(timeCounter >= sendNextTime)
+        if (sendFirstGem)
+        {
+            collectibles[collCounter].GetComponent<CollectibleScript>().rerollHeight();
+            newStart = collectibles[collCounter].transform.position;
+            collectibles[collCounter].transform.position = new Vector3(10, newStart.y, newStart.z);
+            cStart.GetComponent<CollectibleScript>().speed = cStart.GetComponent<CollectibleScript>().speed * .75f;
+            cStart.GetComponent<CollectibleScript>().isMoving = true;
+            sendFirstGem = false;
+        }
+
+        // GameObject c;
+        if (timeCounter >= sendNextTime)
         {
             timeCounter = 0;
             collectibles[collCounter].GetComponent<CollectibleScript>().rerollHeight();
@@ -309,5 +312,6 @@ public class GameManagerScript : MonoBehaviour {
         fader.FadeIn(scoreText, fadeInTime);
         preGame = false;
         audio.PlayOneShot(audio.clip);
+        cStart.GetComponent<CollectibleScript>().isMoving = true;
     }
 }
