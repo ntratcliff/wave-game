@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 114563071600535770}
   - component: {fileID: 50190743521740700}
   - component: {fileID: 58395834410789046}
-  - component: {fileID: 82069681887473316}
   m_Layer: 0
   m_Name: boat
   m_TagString: Untagged
@@ -78,87 +77,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.358423}
   serializedVersion: 2
   m_Radius: 0.4
---- !u!82 &82069681887473316
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1903039899993908}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243329377920313922, guid: a38f48a43a297dc4fab808e24e759cd3,
-    type: 2}
-  m_audioClip: {fileID: 8300000, guid: a9e349a8987252c49b16290fb28f396c, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!114 &114563071600535770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -177,7 +95,7 @@ MonoBehaviour:
   deathForce: 0.25
   deathTilt: 30
   lives: 6
-  immunityFrames: 0
+  immunityFrames: 7
   numWinningPassengers: 100
   winningPassengerCooldown: 0.01
   PersonPrefab: {fileID: 1750084172107866, guid: b2380f0d4d43fdc459b232124570d98c,
