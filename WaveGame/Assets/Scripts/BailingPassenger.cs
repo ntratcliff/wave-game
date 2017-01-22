@@ -47,6 +47,8 @@ public class BailingPassenger : MonoBehaviour
         body.gravityScale = 0;
         body.velocity = Vector3.zero;
         body.angularVelocity = 0;
-        body.rotation = transform.parent.rotation.eulerAngles.z;
+        //body.rotation = transform.parent.rotation.eulerAngles.z;
+        transform.rotation = transform.parent.rotation;
+        //Debug.Log("Tring to board " + transform.parent.rotation.eulerAngles.z + " " + body.rotation);
     }
 }
