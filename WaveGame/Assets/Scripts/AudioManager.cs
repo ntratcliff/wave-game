@@ -12,18 +12,28 @@ public class AudioManager : MonoBehaviour
 
     public float PanVolumeMax = 5f, PanVolumeMin = -80f, PanAbsoluteMin = -30f;
 
-    public float MiddleVolumeMax = 5f, MiddleVolumeMin = -30;
+    public float MiddleVolumeMax = 5f, MiddleVolumeMin = -30, MiddleVolumeTitleMin = -40f, MiddleVolumeRunningMin = -20f;
     public float WaterMiddleMin = -3f, WaterMiddleMax = 3f;
 
     public int MiddleChannelSampleSize = 0;
 
+    public GameManagerScript GameManager;
+
     // Update is called once per frame
     void Update()
     {
+        // update middle volume based on game state
+        if (GameManager.preGame || GameManager.gameEnded)
+        {
+            MiddleVolumeMin = MiddleVolumeTitleMin;
+        }
+        else
+        {
+            MiddleVolumeMin = MiddleVolumeRunningMin;
+        }
+
         // Update mixer volumes for left, right, and middle based on 
-        float p1ForceNormalized = normalize(Player1.InputForceP1, Player1.minCap, Player1.maxCap);
-        float p2ForceNormalized = normalize(Player2.InputForceP2, Player2.minCap, Player2.maxCap);
-        
+
         int index = Water.NumNodes / 2 - MiddleChannelSampleSize / 2;
         float average = 0.0f;
         for (int i = 0; i < MiddleChannelSampleSize; i++)
@@ -35,8 +45,8 @@ public class AudioManager : MonoBehaviour
 
         // get water middle node height
         Vector2 middlePos = Water.Positions[Water.NumNodes / 2];
-        Vector2 leftPos = Water.Positions[0];
-        Vector2 rightPos = Water.Positions[Water.NumNodes - 1];
+        Vector2 leftPos = Water.Positions[Player1.minLeftNode];
+        Vector2 rightPos = Water.Positions[Player2.minRightNode];
         //float middlePosNormalized = normalize(middlePos.y, WaterMiddleMin, WaterMiddleMax);
         float middlePosNormalized = normalize(average, WaterMiddleMin, WaterMiddleMax);
         float leftPosNormalized = normalize(leftPos.y, WaterMiddleMin, WaterMiddleMax);

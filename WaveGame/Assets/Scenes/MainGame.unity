@@ -524,26 +524,16 @@ Prefab:
       propertyPath: Water
       value: 
       objectReference: {fileID: 32124129}
-    - target: {fileID: 82357015524010994, guid: 1a010debd727fb14bb5a0223e9d2c963,
+    - target: {fileID: 114109768721490670, guid: 1a010debd727fb14bb5a0223e9d2c963,
         type: 2}
-      propertyPath: m_audioClip
+      propertyPath: GameManager
       value: 
-      objectReference: {fileID: 8300000, guid: ae6f8d7ebfe22154aa311911b6b87ff7, type: 3}
-    - target: {fileID: 82441227243596742, guid: 1a010debd727fb14bb5a0223e9d2c963,
+      objectReference: {fileID: 502707237}
+    - target: {fileID: 114109768721490670, guid: 1a010debd727fb14bb5a0223e9d2c963,
         type: 2}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: adf7a8b3eca2fc548a1dfb9aa7ff4b7e, type: 3}
-    - target: {fileID: 82741422849019110, guid: 1a010debd727fb14bb5a0223e9d2c963,
-        type: 2}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: f8fde7b5bd0d7184a8f21f325426011b, type: 3}
-    - target: {fileID: 82754116019301216, guid: 1a010debd727fb14bb5a0223e9d2c963,
-        type: 2}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: f174ecb97fcaf854c9ae6af5946e6da9, type: 3}
+      propertyPath: MiddleVolumeRunningMin
+      value: -10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1a010debd727fb14bb5a0223e9d2c963, type: 2}
   m_IsPrefabParent: 0

@@ -182,37 +182,37 @@ InputManager:
     axis: 1
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Fire1
+    m_Name: Wave1Trigger
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick button 0
+    positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
     snap: 0
     invert: 0
-    type: 0
-    axis: 0
+    type: 2
+    axis: 8
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Fire2
+    m_Name: Wave2Trigger
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick button 1
+    positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
     snap: 0
     invert: 0
-    type: 0
-    axis: 0
-    joyNum: 0
+    type: 2
+    axis: 8
+    joyNum: 2
   - serializedVersion: 3
     m_Name: Fire3
     descriptiveName: 
