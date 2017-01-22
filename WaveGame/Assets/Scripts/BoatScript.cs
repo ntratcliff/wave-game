@@ -24,12 +24,18 @@ public class BoatScript : MonoBehaviour
     float immunityTimeLeft = 0;
 
     Queue<GameObject> passengers;
-    [Range(0, 1)]
-    float percSkinnyPerson = .33f;
-    [Range(0, 1)]
-    float percChildPerson = .33f;
-    [Range(0, 1)]
-    float percFatPerson = .33f;
+    GameObject[] winningPassengers;
+    BailingPassenger[] winningPassengersScripts;
+    public int numWinningPassengers = 100;
+    public float winningPassengerCooldown = .01f;
+    float winningPassengerTimeLeft = 0;
+    int winningPassengerIndex = 0;
+    //[Range(0, 1)]
+    //float percSkinnyPerson = .33f;
+    //[Range(0, 1)]
+    //float percChildPerson = .33f;
+    //[Range(0, 1)]
+    //float percFatPerson = .33f;
 
     public GameObject PersonPrefab;
     public float PersonStartX, PersonSpacing, MiddleSpacing;
@@ -97,6 +103,17 @@ public class BoatScript : MonoBehaviour
 
             passengers.Enqueue(person);
         }
+
+        winningPassengers = new GameObject[numWinningPassengers];
+        winningPassengersScripts = new BailingPassenger[numWinningPassengers];
+
+        for (int i = 0; i < numWinningPassengers; i++)
+        {
+            winningPassengers[i] = Instantiate(PersonPrefab);
+            winningPassengers[i].transform.position = new Vector3(-1000, -1000, 0);
+            winningPassengersScripts[i] = winningPassengers[i].GetComponent<BailingPassenger>();
+            winningPassengersScripts[i].enabled = true;
+        }
     }
 
     #region Old Physics Code
@@ -111,6 +128,11 @@ public class BoatScript : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
+        if (lives <= 0)
+        {
+            LaunchWinners();
+        }
+
         Vector2 middleNode = wave.Positions[index];
         Vector2 nextNode = wave.Positions[index + nodeDifference];
         Vector2 prevNode = wave.Positions[index - nodeDifference];
@@ -123,18 +145,31 @@ public class BoatScript : MonoBehaviour
         float angle = Mathf.Acos(Vector3.Dot(transform.right, Vector3.right)) * Mathf.Rad2Deg;
         float velocity = ((Vector2)transform.position - lastPos).magnitude;
 
-        if ((velocity >= deathForce || angle >= deathTilt) && immunityTimeLeft <= 0)
+        if ((velocity >= deathForce || angle >= deathTilt) && immunityTimeLeft <= 0 && lives > 0)
         {
             Debug.Log("You lost a life");
             --lives;
             immunityTimeLeft = immunityFrames;
             GameObject bailingPassenger = passengers.Dequeue();
-            bailingPassenger.GetComponent<BailingPassenger>().enabled = true;
             bailingPassenger.transform.parent = null;
-            //bailingPassenger.GetComponent<Rigidbody2D>().gravityScale = 1;
+            bailingPassenger.GetComponent<BailingPassenger>().Bail();
         }
 
         immunityTimeLeft -= Time.deltaTime;
         lastPos = transform.position;
+    }
+
+    void LaunchWinners()
+    {
+        winningPassengerTimeLeft -= Time.deltaTime;
+        //Debug.Log("Winning!");
+
+        if (winningPassengerTimeLeft <= 0)
+        {
+            winningPassengers[winningPassengerIndex].transform.position = new Vector3(transform.position.x + Random.Range(-.3f, .3f), transform.position.y + .2f, transform.position.z);
+            winningPassengersScripts[winningPassengerIndex].Bail();
+            winningPassengerIndex = (winningPassengerIndex + 1) % numWinningPassengers;
+            winningPassengerTimeLeft = winningPassengerCooldown;
+        }
     }
 }
