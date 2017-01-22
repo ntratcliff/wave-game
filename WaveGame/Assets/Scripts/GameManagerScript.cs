@@ -155,7 +155,7 @@ public class GameManagerScript : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        if (Input.GetAxis("Wave1") > 0 && Input.GetAxis("Wave2") > 0)
+        if ((Input.GetAxis("Wave1") > 0 ||Input.GetAxis("Wave1Trigger") > 0) && (Input.GetAxis("Wave2") > 0 || Input.GetAxis("Wave2Trigger") > 0))
         {
             if (preGame)
             {
