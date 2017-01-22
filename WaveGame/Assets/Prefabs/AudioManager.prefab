@@ -281,7 +281,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243218293310857124, guid: a38f48a43a297dc4fab808e24e759cd3,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 96a8237374522624e8d49e7ae6296b8e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ae6f8d7ebfe22154aa311911b6b87ff7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -362,7 +362,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243618341257955248, guid: a38f48a43a297dc4fab808e24e759cd3,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: e26f94fa2dc34414da1f1190948c3cb9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: adf7a8b3eca2fc548a1dfb9aa7ff4b7e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -443,7 +443,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243329688159468970, guid: a38f48a43a297dc4fab808e24e759cd3,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: b0b5d83cf17141848a663614374c75a1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f8fde7b5bd0d7184a8f21f325426011b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -524,7 +524,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243114572939293406, guid: a38f48a43a297dc4fab808e24e759cd3,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 055ac7c00af7c384fa3e959b4de8f19c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f174ecb97fcaf854c9ae6af5946e6da9, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -610,11 +610,11 @@ MonoBehaviour:
   Player1: {fileID: 0}
   Player2: {fileID: 0}
   Water: {fileID: 0}
-  PanVolumeMax: 5
-  PanVolumeMin: -20
-  PanAbsoluteMin: -30
+  PanVolumeMax: 0
+  PanVolumeMin: -40
+  PanAbsoluteMin: -40
   MiddleVolumeMax: 8
-  MiddleVolumeMin: -20
-  WaterMiddleMin: -2
+  MiddleVolumeMin: -40
+  WaterMiddleMin: -1
   WaterMiddleMax: 1
-  MiddleChannelSampleSize: 0
+  MiddleChannelSampleSize: 10
