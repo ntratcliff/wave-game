@@ -196,7 +196,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 8
-    joyNum: 0
+    joyNum: 1
   - serializedVersion: 3
     m_Name: Wave2Trigger
     descriptiveName: 

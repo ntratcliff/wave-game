@@ -240,7 +240,18 @@ public class GameManagerScript : MonoBehaviour {
     public void EndGame()
     {
         fader.FadeIn(endText, fadeInTime);
+        for (int i = 0; i < collectibles.Count; i++)
+        {
+            newStart = collectibles[collCounter].transform.position;
+//            collectibles[i].GetComponent<CollectibleScript>().isMoving = false;
+            collectibles[i].GetComponent<CollectibleScript>().moveOffscreen();
+            //  collectibles[i].GetComponent<CollectibleScript>().rerollHeight();
+            //            collectibles[i].GetComponent<CollectibleScript>().rerollHeight();
+            //       collectibles[collCounter].transform.position = new Vector3(1000, newStart.y, newStart.z);
+
+        }
         gameEnded = true;
+
     }
 
     public void RestartGame()
@@ -260,6 +271,16 @@ public class GameManagerScript : MonoBehaviour {
         if (!firstLoop)
         {
             audio.PlayOneShot(audio.clip);
+        }
+
+        for(int i = 0; i < collectibles.Count; i++)
+        {
+            newStart = collectibles[collCounter].transform.position;
+            collectibles[i].GetComponent<CollectibleScript>().isMoving = false;
+            collectibles[i].GetComponent<CollectibleScript>().rerollHeight();
+            //            collectibles[i].GetComponent<CollectibleScript>().rerollHeight();
+            collectibles[collCounter].transform.position = new Vector3(10, newStart.y, newStart.z);
+
         }
     }
 

@@ -156,8 +156,8 @@ MonoBehaviour:
   didCollide: 0
   sfx: {fileID: 82298965237374098}
   noiseModifierRangeLow: 0.1
-  noiseModifierRangeHigh: 5
-  heightMultiplier: 3
+  noiseModifierRangeHigh: 10
+  heightMultiplier: 5
   minHeight: -1
   maxHeight: 0
   sfxPitchLow: 0.8
@@ -192,7 +192,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: cb0f428c44247f647abb39abdbc4cbbf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

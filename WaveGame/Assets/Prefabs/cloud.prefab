@@ -66,7 +66,7 @@ MonoBehaviour:
   speedModMin: 0.2
   speedMonMax: 0.6
   zAnchor: 2
-  zMod: 2
+  zMod: 1.5
   minHeight: 1.1
   maxHeight: 3
   minXmod: 1
