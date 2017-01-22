@@ -23,10 +23,12 @@ public class BoatScript : MonoBehaviour
     [SerializeField]
     float immunityFrames = 7;
     float immunityTimeLeft = 0;
+    public float timeToFlashOnce = .2f;
 
     Queue<GameObject> passengers;
     GameObject[] winningPassengers;
     BailingPassenger[] winningPassengersScripts;
+    SpriteRenderer[] renderers;
     public int numWinningPassengers = 100;
     public float winningPassengerCooldown = .01f;
     float winningPassengerTimeLeft = 0;
@@ -111,6 +113,8 @@ public class BoatScript : MonoBehaviour
             winningPassengersScripts[i].enabled = true;
         }
 
+        renderers = GetComponentsInChildren<SpriteRenderer>();
+
         if (!gameManager)
         {
             Debug.LogError("Forgot to add the game manager to the boat");
@@ -166,10 +170,49 @@ public class BoatScript : MonoBehaviour
             {
                 gameManager.EndGame();
             }
+            else
+            {
+                StartCoroutine(CycleImmunityColor());
+            }
         }
 
-        immunityTimeLeft -= Time.deltaTime;
         lastPos = transform.position;
+    }
+
+    IEnumerator CycleImmunityColor()
+    {
+        float timeSinceLastFlash;
+        int end = 0;
+
+        while (immunityTimeLeft > 0)
+        {
+            timeSinceLastFlash = 0;
+            while (timeSinceLastFlash < timeToFlashOnce)
+            {
+                for (int i = 0; i < renderers.Length; i++)
+                {
+                    renderers[i].material.color = new Color(renderers[i].material.color.r, renderers[i].material.color.g, renderers[i].material.color.b, Mathf.Lerp(renderers[i].material.color.a, end, timeSinceLastFlash / timeToFlashOnce));
+                }
+
+                timeSinceLastFlash += Time.deltaTime;
+                immunityTimeLeft -= Time.deltaTime;
+                yield return null;
+            }
+
+            if (end == 0)
+            {
+                end = 1;
+            }
+            else
+            {
+                end = 0;
+            }
+        }
+
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            renderers[i].material.color = new Color(renderers[i].material.color.r, renderers[i].material.color.g, renderers[i].material.color.b, 1);
+        }
     }
 
     void LaunchWinners()
