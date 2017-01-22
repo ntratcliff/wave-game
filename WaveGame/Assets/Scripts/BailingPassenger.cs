@@ -11,10 +11,11 @@ public class BailingPassenger : MonoBehaviour
     public float torqueMin = -200;
     public float torqueMax = 200;
     public float fadeTime = .75f;
+    public AudioClip[] screams;
     Rigidbody2D body;
     AudioSource audio;
     Renderer renderer;
-    public AudioClip[] screams;
+    GameManagerScript gameManager;
 
     // Use this for initialization
     void Awake ()
@@ -22,6 +23,7 @@ public class BailingPassenger : MonoBehaviour
         body = gameObject.GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
         renderer = GetComponent<Renderer>();
+        gameManager = FindObjectOfType<GameManagerScript>();
 	}
 	
 	// Update is called once per frame
@@ -38,7 +40,8 @@ public class BailingPassenger : MonoBehaviour
         body.AddForce(new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax)));
         body.AddTorque(Random.Range(torqueMin, torqueMax));
         int randIndex = (int)Random.Range(0.0f, 2.0f);
-        audio.PlayOneShot(screams[randIndex]);
+        if(!gameManager.gameEnded)
+            audio.PlayOneShot(screams[randIndex]);
     }
 
     public void Board()
