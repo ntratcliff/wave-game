@@ -10,7 +10,7 @@ public class BailingPassenger : MonoBehaviour
     public float yMax = 300;
     public float torqueMin = -200;
     public float torqueMax = 200;
-    public float fadeTime = 2;
+    public float fadeTime = .75f;
     Rigidbody2D body;
     AudioSource audio;
     Renderer renderer;
