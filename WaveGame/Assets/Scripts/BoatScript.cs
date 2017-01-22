@@ -28,6 +28,14 @@ public class BoatScript : MonoBehaviour
     float immunityFrames = 7;
     float immunityTimeLeft = 0;
 
+    Queue<GameObject> passengers;
+    [Range(0, 1)]
+    float percSkinnyPerson = .33f;
+    [Range(0, 1)]
+    float percChildPerson = .33f;
+    [Range(0, 1)]
+    float percFatPerson = .33f;
+
     public int Lives
     {
         get
@@ -42,6 +50,36 @@ public class BoatScript : MonoBehaviour
         index = wave.Positions.Length / 2;
         transform.position = wave.Positions[index];
         lastPos = transform.position;
+        passengers = new Queue<GameObject>();
+
+        //for (int i = 0; i < transform.childCount; i++)
+        //{
+        //    passengers.Enqueue(transform.GetChild(i).gameObject);
+        //}
+
+        for (int i = 0; i < lives; i++)
+        {
+            float guyPerc = Random.Range(0, 100);
+            GameObject newGuy;
+
+            if (guyPerc < percSkinnyPerson * 100)
+            {
+                newGuy = Resources.Load("SkinnyPerson") as GameObject;
+            }
+            else if (guyPerc < (percSkinnyPerson + percChildPerson) * 100)
+            {
+                newGuy = Resources.Load("ChildPerson") as GameObject;
+            }
+            else
+            {
+                newGuy = Resources.Load("FatPerson") as GameObject;
+            }
+
+            newGuy = Instantiate(newGuy, transform);
+            newGuy.transform.parent = transform;
+            newGuy.transform.localPosition = new Vector3(newGuy.transform.localPosition.x + Random.Range(-.3f, .3f), newGuy.transform.localPosition.y, newGuy.transform.localPosition.z);
+            passengers.Enqueue(newGuy);
+        }
     }
 
     #region Old Physics Code
@@ -72,6 +110,10 @@ public class BoatScript : MonoBehaviour
             Debug.Log("You lost a life");
             --lives;
             immunityTimeLeft = immunityFrames;
+            GameObject bailingPassenger = passengers.Dequeue();
+            bailingPassenger.GetComponent<BailingPassenger>().enabled = true;
+            bailingPassenger.transform.parent = null;
+            //bailingPassenger.GetComponent<Rigidbody2D>().gravityScale = 1;
         }
 
         immunityTimeLeft -= Time.deltaTime;

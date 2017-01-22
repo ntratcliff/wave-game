@@ -94,6 +94,10 @@ MonoBehaviour:
   initVel: {x: 0, y: 0}
   initAccel: {x: 0, y: 0}
   nodeDifference: 4
+  deathForce: 0.25
+  deathTilt: 30
+  lives: 3
+  immunityFrames: 7
 --- !u!212 &212222601805788388
 SpriteRenderer:
   m_ObjectHideFlags: 1
