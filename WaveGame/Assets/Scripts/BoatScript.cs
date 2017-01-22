@@ -39,6 +39,7 @@ public class BoatScript : MonoBehaviour
 
     public GameObject PersonPrefab;
     public float PersonStartX, PersonSpacing, MiddleSpacing;
+    public GameManagerScript gameManager;
 
     public int Lives
     {
@@ -114,6 +115,12 @@ public class BoatScript : MonoBehaviour
             winningPassengersScripts[i] = winningPassengers[i].GetComponent<BailingPassenger>();
             winningPassengersScripts[i].enabled = true;
         }
+
+        if (!gameManager)
+        {
+            Debug.LogError("Forgot to add the game manager to the boat");
+            gameManager = GameObject.FindObjectOfType<GameManagerScript>();
+        }
     }
 
     #region Old Physics Code
@@ -145,6 +152,11 @@ public class BoatScript : MonoBehaviour
         float angle = Mathf.Acos(Vector3.Dot(transform.right, Vector3.right)) * Mathf.Rad2Deg;
         float velocity = ((Vector2)transform.position - lastPos).magnitude;
 
+        if (gameManager.preGame)
+        {
+            return;
+        }
+
         if ((velocity >= deathForce || angle >= deathTilt) && immunityTimeLeft <= 0 && lives > 0)
         {
             Debug.Log("You lost a life");
@@ -153,6 +165,11 @@ public class BoatScript : MonoBehaviour
             GameObject bailingPassenger = passengers.Dequeue();
             bailingPassenger.transform.parent = null;
             bailingPassenger.GetComponent<BailingPassenger>().Bail();
+
+            if (lives <= 0)
+            {
+                gameManager.EndGame();
+            }
         }
 
         immunityTimeLeft -= Time.deltaTime;
@@ -166,7 +183,7 @@ public class BoatScript : MonoBehaviour
 
         if (winningPassengerTimeLeft <= 0)
         {
-            winningPassengers[winningPassengerIndex].transform.position = new Vector3(transform.position.x + Random.Range(-.3f, .3f), transform.position.y + .2f, transform.position.z);
+            winningPassengers[winningPassengerIndex].transform.position = new Vector3(transform.position.x + Random.Range(PersonStartX, -PersonStartX), transform.position.y + .2f, transform.position.z);
             winningPassengersScripts[winningPassengerIndex].Bail();
             winningPassengerIndex = (winningPassengerIndex + 1) % numWinningPassengers;
             winningPassengerTimeLeft = winningPassengerCooldown;

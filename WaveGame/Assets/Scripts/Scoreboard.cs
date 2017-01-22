@@ -28,4 +28,9 @@ public class Scoreboard : MonoBehaviour
     {
         score++;
     }
+
+    public void Reset()
+    {
+        score = 0;
+    }
 }

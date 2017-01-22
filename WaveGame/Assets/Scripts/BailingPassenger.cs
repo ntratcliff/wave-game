@@ -8,8 +8,8 @@ public class BailingPassenger : MonoBehaviour
     public float xMax = 200;
     public float yMin = 100;
     public float yMax = 300;
-    public float torqueMin;
-    public float torqueMax;
+    public float torqueMin = -200;
+    public float torqueMax = 200;
     Rigidbody2D body;
     AudioSource audio;
 

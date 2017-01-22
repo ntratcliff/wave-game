@@ -28,8 +28,21 @@ public class GameManagerScript : MonoBehaviour {
     private CollectibleScript cScript;
     private CloudScript cloudScript;
     private Vector3 newStart;
-	// Use this for initialization
-	void Start () {
+
+    [HideInInspector]
+    public Fading fader;
+    public GameObject startText;
+    public GameObject endText;
+    public GameObject scoreText;
+    public float fadeInTime = 1;
+    public float fadeOutTime = 1;
+    public bool gameEnded = false;
+    public bool preGame = true;
+    public Scoreboard score;
+
+    // Use this for initialization
+    void Start ()
+    {
         GameObject c1 = Instantiate(collectibleGod);
         GameObject c2 = Instantiate(collectibleGod);
         GameObject c3 = Instantiate(collectibleGod);
@@ -84,40 +97,54 @@ public class GameManagerScript : MonoBehaviour {
         clouds.Add(cl19);
         clouds.Add(cl20);
 
-        timeCounter = 0;
-        collCounter = 0;
-        cloudTimeCounter = 0;
-        cloudCounter = 0;
-        cloudSendNextTime = Random.Range(lowerCloudRangeSeconds, higherCloudRangeSeconds);
-        sendNextTime = Random.Range(lowerRangeSeconds, higherRangeSeconds);
-
-
         cScript = GetComponent<CollectibleScript>();
 
-        
+        fader = GameObject.FindObjectOfType<Fading>();
+
+        if (!fader)
+        {
+            Debug.LogError("Can't find the fader for the game manager");
+        }
+
+        if (!startText)
+        {
+            GameObject.Find("Start Screen");
+            Debug.LogError("Forgot to add the start text to the game manager");
+        }
+
+        if (!endText)
+        {
+            GameObject.Find("Game Over Screen");
+            Debug.LogError("Forgot to add the game over text to the game manager");
+        }
+
+        if (!scoreText)
+        {
+            GameObject.Find("Score");
+            Debug.LogError("Forgot to add the score text to the game manager");
+        }
+
+        if (!score)
+        {
+            GameObject.FindObjectOfType<Scoreboard>();
+            Debug.LogError("Forgot to add the scoreboard to the game manager");
+        }
+
+        RestartGame();
     }
 
     // Update is called once per frame
-    void Update () {
-       // GameObject c;
-		if(timeCounter >= sendNextTime)
+    void Update ()
+    {
+        if (Input.GetAxis("Wave1") > 0 && Input.GetAxis("Wave2") > 0)
         {
-            timeCounter = 0;
-            newStart = collectibles[collCounter].transform.position;
-            collectibles[collCounter].GetComponent<CollectibleScript>().rerollHeight();
-            collectibles[collCounter].transform.position = new Vector3(10, newStart.y, newStart.z);
-            sendNextTime = Random.Range(lowerRangeSeconds, higherRangeSeconds);
-            //         print(collectibles[2].GetComponent<CollectibleScript>().speed);
-            //           print(collectibles[2].GetComponent<CollectibleScript>().higherRangeSpeed);
-
-            //        print(collectibles[2].GetComponent<CollectibleScript>().lowerRangeSpeed);
-            //       collectibles[1].GetComponent<CollectibleScript>().speed = Random.Range(GetComponent<CollectibleScript>().lowerRangeSpeed, GetComponent<CollectibleScript>().higherRangeSpeed);
-            collectibles[collCounter].GetComponent<CollectibleScript>().isMoving = true;
-            collCounter++;
-            if (collCounter >= collectibles.Count)
+            if (preGame)
             {
-                collCounter = 0;
-                
+                StartGame();
+            }
+            else if (gameEnded)
+            {
+                RestartGame();
             }
         }
 
@@ -141,11 +168,68 @@ public class GameManagerScript : MonoBehaviour {
             if (cloudCounter >= clouds.Count)
             {
                 cloudCounter = 0;
-
             }
         }
 
         cloudTimeCounter += Time.deltaTime;
+
+        if (preGame || gameEnded)
+        {
+            return;
+        }
+
+       // GameObject c;
+		if(timeCounter >= sendNextTime)
+        {
+            timeCounter = 0;
+            newStart = collectibles[collCounter].transform.position;
+            collectibles[collCounter].GetComponent<CollectibleScript>().rerollHeight();
+            collectibles[collCounter].transform.position = new Vector3(10, newStart.y, newStart.z);
+            sendNextTime = Random.Range(lowerRangeSeconds, higherRangeSeconds);
+            //         print(collectibles[2].GetComponent<CollectibleScript>().speed);
+            //           print(collectibles[2].GetComponent<CollectibleScript>().higherRangeSpeed);
+
+            //        print(collectibles[2].GetComponent<CollectibleScript>().lowerRangeSpeed);
+            //       collectibles[1].GetComponent<CollectibleScript>().speed = Random.Range(GetComponent<CollectibleScript>().lowerRangeSpeed, GetComponent<CollectibleScript>().higherRangeSpeed);
+            collectibles[collCounter].GetComponent<CollectibleScript>().isMoving = true;
+            collCounter++;
+            if (collCounter >= collectibles.Count)
+            {
+                collCounter = 0;
+                
+            }
+        }
+
         timeCounter += Time.deltaTime;
 	}
+
+    public void EndGame()
+    {
+        fader.FadeIn(endText, fadeInTime);
+        gameEnded = true;
+        Debug.Log("Fading in end text");
+    }
+
+    public void RestartGame()
+    {
+        fader.FadeOut(endText, fadeOutTime);
+        gameEnded = false;
+
+        timeCounter = 0;
+        collCounter = 0;
+        cloudTimeCounter = 0;
+        cloudCounter = 0;
+        cloudSendNextTime = Random.Range(lowerCloudRangeSeconds, higherCloudRangeSeconds);
+        sendNextTime = Random.Range(lowerRangeSeconds, higherRangeSeconds);
+        score.Reset();
+        Debug.Log("Fading out end text");
+    }
+
+    public void StartGame()
+    {
+        fader.FadeOut(startText, fadeOutTime);
+        fader.FadeIn(scoreText, fadeInTime);
+        preGame = false;
+        Debug.Log("Fading out start text");
+    }
 }
