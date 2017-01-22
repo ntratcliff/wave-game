@@ -81,7 +81,7 @@ public class WaveButtonScript : MonoBehaviour {
         if (playerNum == PlayerNum.Player_1)
         {
 
-            if (Input.GetAxis("Wave1") > 0)
+            if (Input.GetAxis("Wave1") > 0 || Input.GetAxis("Wave1Trigger") > 0)
             {
 
                 increaseForce = true;
@@ -117,7 +117,7 @@ public class WaveButtonScript : MonoBehaviour {
         if (playerNum == PlayerNum.Player_2)
         {
 
-            if (Input.GetAxis("Wave2") > 0)
+            if (Input.GetAxis("Wave2") > 0 || Input.GetAxis("Wave2Trigger") > 0)
             {
 
                 inputForceP2 += scaleForce * Time.deltaTime;
