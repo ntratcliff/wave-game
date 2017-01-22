@@ -524,6 +524,16 @@ Prefab:
       propertyPath: Water
       value: 
       objectReference: {fileID: 32124129}
+    - target: {fileID: 114109768721490670, guid: 1a010debd727fb14bb5a0223e9d2c963,
+        type: 2}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 502707237}
+    - target: {fileID: 114109768721490670, guid: 1a010debd727fb14bb5a0223e9d2c963,
+        type: 2}
+      propertyPath: MiddleVolumeRunningMin
+      value: -10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1a010debd727fb14bb5a0223e9d2c963, type: 2}
   m_IsPrefabParent: 0

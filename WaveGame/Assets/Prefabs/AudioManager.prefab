@@ -613,8 +613,11 @@ MonoBehaviour:
   PanVolumeMax: 0
   PanVolumeMin: -40
   PanAbsoluteMin: -40
-  MiddleVolumeMax: 8
+  MiddleVolumeMax: 0
   MiddleVolumeMin: -40
+  MiddleVolumeTitleMin: -40
+  MiddleVolumeRunningMin: -20
   WaterMiddleMin: -1
   WaterMiddleMax: 1
   MiddleChannelSampleSize: 10
+  GameManager: {fileID: 0}
