@@ -724,6 +724,32 @@ Prefab:
       propertyPath: angleMultiplier
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 114563071600535770, guid: 3745487c4263eea41a547ce0b2819667,
+        type: 2}
+      propertyPath: PersonStartX
+      value: -0.314
+      objectReference: {fileID: 0}
+    - target: {fileID: 114563071600535770, guid: 3745487c4263eea41a547ce0b2819667,
+        type: 2}
+      propertyPath: MiddleSpacing
+      value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 114563071600535770, guid: 3745487c4263eea41a547ce0b2819667,
+        type: 2}
+      propertyPath: PersonSpacing
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114563071600535770, guid: 3745487c4263eea41a547ce0b2819667,
+        type: 2}
+      propertyPath: PersonPrefab
+      value: 
+      objectReference: {fileID: 1750084172107866, guid: b2380f0d4d43fdc459b232124570d98c,
+        type: 2}
+    - target: {fileID: 114563071600535770, guid: 3745487c4263eea41a547ce0b2819667,
+        type: 2}
+      propertyPath: lives
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3745487c4263eea41a547ce0b2819667, type: 2}
   m_IsPrefabParent: 0
