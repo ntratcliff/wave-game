@@ -151,14 +151,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   y: 0
   speed: 1
-  perlinFreq: 0.5
+  perlinFreq: 2
   isMoving: 0
   didCollide: 0
   sfx: {fileID: 82298965237374098}
-  noiseModifierRangeLow: 0
-  noiseModifierRangeHigh: 0
-  heightMultiplier: 0
-  minHeight: 0
+  noiseModifierRangeLow: 0.1
+  noiseModifierRangeHigh: 5
+  heightMultiplier: 3
+  minHeight: -1
   maxHeight: 0
   sfxPitchLow: 0.8
   sfxPitchHigh: 1.2

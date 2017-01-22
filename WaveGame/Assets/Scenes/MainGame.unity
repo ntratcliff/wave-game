@@ -411,12 +411,12 @@ Prefab:
     - target: {fileID: 114677934892059738, guid: e1898fdf585236b488a762743ba56287,
         type: 2}
       propertyPath: lowerRangeSeconds
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114677934892059738, guid: e1898fdf585236b488a762743ba56287,
         type: 2}
       propertyPath: higherRangeSeconds
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114677934892059738, guid: e1898fdf585236b488a762743ba56287,
         type: 2}
