@@ -44,8 +44,9 @@ public class GameManagerScript : MonoBehaviour {
     public BoatScript boat;
     [HideInInspector]
     public AudioSource audio;
+    GameObject cStart;
     private bool firstLoop = true;
-
+    public bool sendFirstGem = true;
     // Use this for initialization
     void Start ()
     {
@@ -60,6 +61,9 @@ public class GameManagerScript : MonoBehaviour {
         collectibles.Add(c3);
         collectibles.Add(c4);
         collectibles.Add(c5);
+
+
+        cStart = Instantiate(collectibleGod);
 
         GameObject cl1 = Instantiate(cloudGod);
         GameObject cl2 = Instantiate(cloudGod);
@@ -178,7 +182,18 @@ public class GameManagerScript : MonoBehaviour {
                 startCloudsPos = clouds[i].GetComponent<CloudScript>().transform.position;
                 startCloudsPos = new Vector3(Random.Range(-4.0f, 4.0f), startCloudsPos.y, startCloudsPos.z);
                 clouds[i].GetComponent<CloudScript>().transform.position = startCloudsPos;
+                
             }
+  
+        }
+        if(sendFirstGem)
+        {
+            collectibles[collCounter].GetComponent<CollectibleScript>().rerollHeight();
+            newStart = collectibles[collCounter].transform.position;
+            collectibles[collCounter].transform.position = new Vector3(10, newStart.y, newStart.z);
+            cStart.GetComponent<CollectibleScript>().speed = cStart.GetComponent<CollectibleScript>().speed * .75f;
+            cStart.GetComponent<CollectibleScript>().isMoving = true;
+            sendFirstGem = false;
         }
         firstLoop = false;
 
@@ -216,8 +231,8 @@ public class GameManagerScript : MonoBehaviour {
 		if(timeCounter >= sendNextTime)
         {
             timeCounter = 0;
-            newStart = collectibles[collCounter].transform.position;
             collectibles[collCounter].GetComponent<CollectibleScript>().rerollHeight();
+            newStart = collectibles[collCounter].transform.position;
             collectibles[collCounter].transform.position = new Vector3(10, newStart.y, newStart.z);
             sendNextTime = Random.Range(lowerRangeSeconds, higherRangeSeconds);
             //         print(collectibles[2].GetComponent<CollectibleScript>().speed);
@@ -240,11 +255,24 @@ public class GameManagerScript : MonoBehaviour {
     public void EndGame()
     {
         fader.FadeIn(endText, fadeInTime);
+        for (int i = 0; i < collectibles.Count; i++)
+        {
+            newStart = collectibles[collCounter].transform.position;
+//            collectibles[i].GetComponent<CollectibleScript>().isMoving = false;
+            collectibles[i].GetComponent<CollectibleScript>().moveOffscreen();
+            //  collectibles[i].GetComponent<CollectibleScript>().rerollHeight();
+            //            collectibles[i].GetComponent<CollectibleScript>().rerollHeight();
+            //       collectibles[collCounter].transform.position = new Vector3(1000, newStart.y, newStart.z);
+
+        }
+        cStart.GetComponent<CollectibleScript>().moveOffscreen();
         gameEnded = true;
+
     }
 
     public void RestartGame()
     {
+        sendFirstGem = true;
         fader.FadeOut(endText, fadeOutTime);
         gameEnded = false;
         boat.ResetBoat();
@@ -260,6 +288,16 @@ public class GameManagerScript : MonoBehaviour {
         if (!firstLoop)
         {
             audio.PlayOneShot(audio.clip);
+        }
+
+        for(int i = 0; i < collectibles.Count; i++)
+        {
+            newStart = collectibles[collCounter].transform.position;
+            collectibles[i].GetComponent<CollectibleScript>().isMoving = false;
+            collectibles[i].GetComponent<CollectibleScript>().rerollHeight();
+            //            collectibles[i].GetComponent<CollectibleScript>().rerollHeight();
+            collectibles[collCounter].transform.position = new Vector3(10, newStart.y, newStart.z);
+
         }
     }
 
