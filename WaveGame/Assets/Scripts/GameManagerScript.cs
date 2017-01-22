@@ -256,8 +256,11 @@ public class GameManagerScript : MonoBehaviour {
         cloudSendNextTime = Random.Range(lowerCloudRangeSeconds, higherCloudRangeSeconds);
         sendNextTime = Random.Range(lowerRangeSeconds, higherRangeSeconds);
         score.Reset();
-        audio.PlayOneShot(audio.clip);
-        Debug.Log("Fading out end text");
+
+        if (!firstLoop)
+        {
+            audio.PlayOneShot(audio.clip);
+        }
     }
 
     public void StartGame()
