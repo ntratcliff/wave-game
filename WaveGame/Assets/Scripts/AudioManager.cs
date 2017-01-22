@@ -5,15 +5,17 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
+    //node[0] is left and node[node.length-1] is right
     public AudioMixer Mixer;
     public WaveButtonScript Player1, Player2;
     public WaterManager Water;
 
     public float PanVolumeMax = 5f, PanVolumeMin = -80f, PanAbsoluteMin = -30f;
-    public float PlayerInputMin = 0f, PlayerInputMax = 0.8f;
 
     public float MiddleVolumeMax = 5f, MiddleVolumeMin = -30;
     public float WaterMiddleMin = -3f, WaterMiddleMax = 3f;
+
+    public int MiddleChannelSampleSize = 0;
 
     // Update is called once per frame
     void Update()
@@ -21,24 +23,31 @@ public class AudioManager : MonoBehaviour
         // Update mixer volumes for left, right, and middle based on 
         float p1ForceNormalized = normalize(Player1.InputForceP1, Player1.minCap, Player1.maxCap);
         float p2ForceNormalized = normalize(Player2.InputForceP2, Player2.minCap, Player2.maxCap);
+        
+        int index = Water.NumNodes / 2 - MiddleChannelSampleSize / 2;
+        float average = 0.0f;
+        for (int i = 0; i < MiddleChannelSampleSize; i++)
+        {
+            average += Water.Positions[index].y;
+            index++;
+        }
+        average /= MiddleChannelSampleSize;
 
         // get water middle node height
         Vector2 middlePos = Water.Positions[Water.NumNodes / 2];
-        float waterPosNormalized = normalize(middlePos.y, WaterMiddleMin, WaterMiddleMax);
+        Vector2 leftPos = Water.Positions[0];
+        Vector2 rightPos = Water.Positions[Water.NumNodes - 1];
+        //float middlePosNormalized = normalize(middlePos.y, WaterMiddleMin, WaterMiddleMax);
+        float middlePosNormalized = normalize(average, WaterMiddleMin, WaterMiddleMax);
+        float leftPosNormalized = normalize(leftPos.y, WaterMiddleMin, WaterMiddleMax);
+        float rightPosNormalized = normalize(rightPos.y, WaterMiddleMin, WaterMiddleMax);
 
         float p1Volume = PanAbsoluteMin;
-        if (p1ForceNormalized > PlayerInputMin)
-        {
-            p1Volume = (PanVolumeMax - PanVolumeMin) * p1ForceNormalized + PanVolumeMin;
-        }
-
         float p2Volume = PanAbsoluteMin;
-        if(p2ForceNormalized > PlayerInputMin)
-        {
-            p2Volume = (PanVolumeMax - PanVolumeMin) * p2ForceNormalized + PanVolumeMin;
-        }
 
-        float waterVolume = (MiddleVolumeMax - MiddleVolumeMin) * waterPosNormalized + MiddleVolumeMin;
+        float waterVolume = (MiddleVolumeMax - MiddleVolumeMin) * middlePosNormalized + MiddleVolumeMin;
+        p1Volume = (PanVolumeMax - PanVolumeMin) * leftPosNormalized + PanVolumeMin;
+        p2Volume = (PanVolumeMax - PanVolumeMin) * rightPosNormalized + PanVolumeMin;
 
         Mixer.SetFloat("LeftVolume", p1Volume);
         Mixer.SetFloat("RightVolume", p2Volume);
