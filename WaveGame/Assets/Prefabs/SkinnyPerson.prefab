@@ -170,7 +170,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -201,6 +201,6 @@ MonoBehaviour:
   torqueMin: -200
   torqueMax: 200
   screams:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 7f480aa13ed1f5c4ca83101a0a27259d, type: 3}
+  - {fileID: 8300000, guid: 59ca3e897e8a63d449c216fe54efd81d, type: 3}
+  - {fileID: 8300000, guid: 7c54c56a2c9d175418c98c6574bfec17, type: 3}
