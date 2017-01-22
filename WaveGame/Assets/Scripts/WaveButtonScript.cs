@@ -31,8 +31,8 @@ public class WaveButtonScript : MonoBehaviour {
     Camera cam;
     float currAspect;
 
-    int minLeftNode = 0;
-    int minRightNode = 0;
+    public int minLeftNode = 0;
+    public int minRightNode = 0;
 
     public float InputForceP1
     {
