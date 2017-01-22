@@ -28,6 +28,7 @@ public class GameManagerScript : MonoBehaviour {
     private CollectibleScript cScript;
     private CloudScript cloudScript;
     private Vector3 newStart;
+    private bool firstLoop = true;
 	// Use this for initialization
 	void Start () {
         GameObject c1 = Instantiate(collectibleGod);
@@ -99,8 +100,24 @@ public class GameManagerScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-       // GameObject c;
-		if(timeCounter >= sendNextTime)
+
+        if (firstLoop)
+        {
+            Vector3 startCloudsPos;
+            for (int i = 15; i < 20; i++)
+            {
+                clouds[i].GetComponent<CloudScript>().rerollScale();
+                clouds[i].GetComponent<CloudScript>().rerollHeight();
+                clouds[i].GetComponent<CloudScript>().isMoving = true;
+                startCloudsPos = clouds[i].GetComponent<CloudScript>().transform.position;
+                startCloudsPos = new Vector3(Random.Range(-4.0f, 4.0f), startCloudsPos.y, startCloudsPos.z);
+                clouds[i].GetComponent<CloudScript>().transform.position = startCloudsPos;
+            }
+        }
+        firstLoop = false;
+
+        // GameObject c;
+        if (timeCounter >= sendNextTime)
         {
             timeCounter = 0;
             newStart = collectibles[collCounter].transform.position;
