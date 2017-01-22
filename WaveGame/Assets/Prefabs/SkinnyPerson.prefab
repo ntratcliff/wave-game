@@ -163,9 +163,9 @@ MonoBehaviour:
   torqueMax: 200
   fadeTime: 0.75
   screams:
-  - {fileID: 8300000, guid: 7f480aa13ed1f5c4ca83101a0a27259d, type: 3}
-  - {fileID: 8300000, guid: 59ca3e897e8a63d449c216fe54efd81d, type: 3}
-  - {fileID: 8300000, guid: 7c54c56a2c9d175418c98c6574bfec17, type: 3}
+  - {fileID: 8300000, guid: e610f10a52293da4186591727c093078, type: 3}
+  - {fileID: 8300000, guid: b4ab1475ce8a0b642957015c647bc701, type: 3}
+  - {fileID: 8300000, guid: 8eb0fea9116527b4099bde8f3894398a, type: 3}
 --- !u!212 &212477773993806956
 SpriteRenderer:
   m_ObjectHideFlags: 1
