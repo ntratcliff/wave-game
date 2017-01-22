@@ -90,7 +90,7 @@ public class WaveButtonScript : MonoBehaviour {
         if (playerNum == PlayerNum.Player_1)
         {
 
-            if (Input.GetKey(KeyCode.LeftAlt))
+            if (Input.GetAxis("Wave1") > 0)
             {
 
                 increaseForce = true;
@@ -126,7 +126,7 @@ public class WaveButtonScript : MonoBehaviour {
         if (playerNum == PlayerNum.Player_2)
         {
 
-            if (Input.GetKey(KeyCode.RightAlt))
+            if (Input.GetAxis("Wave2") > 0)
             {
 
                 inputForceP2 += scaleForce * Time.deltaTime;
