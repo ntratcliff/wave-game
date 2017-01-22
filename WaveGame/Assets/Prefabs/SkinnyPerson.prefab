@@ -200,3 +200,7 @@ MonoBehaviour:
   yMax: 500
   torqueMin: 0
   torqueMax: 0
+  screams:
+  - {fileID: 8300000, guid: 7f480aa13ed1f5c4ca83101a0a27259d, type: 3}
+  - {fileID: 8300000, guid: 59ca3e897e8a63d449c216fe54efd81d, type: 3}
+  - {fileID: 8300000, guid: 7c54c56a2c9d175418c98c6574bfec17, type: 3}
