@@ -31,6 +31,9 @@ public class BoatScript : MonoBehaviour
     [Range(0, 1)]
     float percFatPerson = .33f;
 
+    public GameObject PersonPrefab;
+    public float PersonStartX, PersonSpacing, MiddleSpacing;
+
     public int Lives
     {
         get
@@ -52,28 +55,47 @@ public class BoatScript : MonoBehaviour
         //    passengers.Enqueue(transform.GetChild(i).gameObject);
         //}
 
+        //for (int i = 0; i < lives; i++)
+        //{
+        //    float guyPerc = Random.Range(0, 100);
+        //    GameObject newGuy;
+
+        //    if (guyPerc < percSkinnyPerson * 100)
+        //    {
+        //        newGuy = Resources.Load("SkinnyPerson") as GameObject;
+        //    }
+        //    else if (guyPerc < (percSkinnyPerson + percChildPerson) * 100)
+        //    {
+        //        newGuy = Resources.Load("ChildPerson") as GameObject;
+        //    }
+        //    else
+        //    {
+        //        newGuy = Resources.Load("FatPerson") as GameObject;
+        //    }
+
+        //    newGuy = Instantiate(newGuy, transform);
+        //    newGuy.transform.parent = transform;
+        //    newGuy.transform.localPosition = new Vector3(newGuy.transform.localPosition.x + Random.Range(-.3f, .3f), newGuy.transform.localPosition.y, newGuy.transform.localPosition.z);
+        //    passengers.Enqueue(newGuy);
+        //}
+
         for (int i = 0; i < lives; i++)
         {
-            float guyPerc = Random.Range(0, 100);
-            GameObject newGuy;
+            GameObject person = Instantiate(PersonPrefab);
+            person.transform.parent = transform;
+            person.transform.localPosition = PersonPrefab.transform.localPosition;
 
-            if (guyPerc < percSkinnyPerson * 100)
+            Vector3 pos = person.transform.localPosition;
+            pos.x = PersonStartX + i * PersonSpacing;
+
+            if(i >= lives / 2)
             {
-                newGuy = Resources.Load("SkinnyPerson") as GameObject;
-            }
-            else if (guyPerc < (percSkinnyPerson + percChildPerson) * 100)
-            {
-                newGuy = Resources.Load("ChildPerson") as GameObject;
-            }
-            else
-            {
-                newGuy = Resources.Load("FatPerson") as GameObject;
+                pos.x += MiddleSpacing;
             }
 
-            newGuy = Instantiate(newGuy, transform);
-            newGuy.transform.parent = transform;
-            newGuy.transform.localPosition = new Vector3(newGuy.transform.localPosition.x + Random.Range(-.3f, .3f), newGuy.transform.localPosition.y, newGuy.transform.localPosition.z);
-            passengers.Enqueue(newGuy);
+            person.transform.localPosition = pos;
+
+            passengers.Enqueue(person);
         }
     }
 
