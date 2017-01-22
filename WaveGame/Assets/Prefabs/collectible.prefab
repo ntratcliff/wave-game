@@ -65,7 +65,8 @@ AudioSource:
   m_GameObject: {fileID: 1720660178761072}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243329377920313922, guid: a38f48a43a297dc4fab808e24e759cd3,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: bba2d6498ea994b47ab686ea3f7700a8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -159,6 +160,8 @@ MonoBehaviour:
   heightMultiplier: 0
   minHeight: 0
   maxHeight: 0
+  sfxPitchLow: 0.8
+  sfxPitchHigh: 1.2
 --- !u!212 &212983394670231988
 SpriteRenderer:
   m_ObjectHideFlags: 1

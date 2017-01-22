@@ -25,6 +25,9 @@ public class CollectibleScript : MonoBehaviour {
     public float minHeight;
     public float maxHeight;
 
+    public float sfxPitchLow;  //.8
+    public float sfxPitchHigh; //1.2
+
 	// Use this for initialization
 	void Start () {
 
@@ -61,7 +64,9 @@ public class CollectibleScript : MonoBehaviour {
         transform.position = new Vector3(10, transform.position.y, transform.position.z);
         rerollHeight();
         scoreboard.AddPoint();
+        sfx.pitch = Random.Range(sfxPitchLow, sfxPitchHigh);
         sfx.Play();
+        
     }
 
     
