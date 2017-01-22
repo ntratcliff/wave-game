@@ -682,6 +682,11 @@ Prefab:
       propertyPath: deathTilt
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 114563071600535770, guid: 3745487c4263eea41a547ce0b2819667,
+        type: 2}
+      propertyPath: lerpMultiplier
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3745487c4263eea41a547ce0b2819667, type: 2}
   m_IsPrefabParent: 0
