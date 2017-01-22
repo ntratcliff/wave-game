@@ -60,7 +60,7 @@ public class CollectibleScript : MonoBehaviour {
 
     public void moveOffscreen()
     {
-        transform.position = new Vector3(10, 1000, transform.position.z);
+        transform.position = new Vector3(20, 100, transform.position.z);
     }
     //score implementation
     void OnTriggerEnter2D(Collider2D other)
