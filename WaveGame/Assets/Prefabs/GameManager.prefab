@@ -57,13 +57,23 @@ MonoBehaviour:
   collectibleGod: {fileID: 1720660178761072, guid: cb322e1c3bb8a5c408ae159286a4b8f0,
     type: 2}
   cloudGod: {fileID: 1797048090453840, guid: 4008e04395753e04d94529cfc5bb3d12, type: 2}
-  lowerRangeSeconds: 4
-  higherRangeSeconds: 6
-  lowerCloudRangeSeconds: 0
-  higherCloudRangeSeconds: 0
+  lowerRangeSeconds: 2
+  higherRangeSeconds: 5
+  lowerCloudRangeSeconds: 5
+  higherCloudRangeSeconds: 8
   sendNextTime: 0
   collCounter: 0
   cloudCounter: 0
   cloudSendNextTime: 0
   collectibles: []
   clouds: []
+  fader: {fileID: 0}
+  startText: {fileID: 0}
+  endText: {fileID: 0}
+  scoreText: {fileID: 0}
+  fadeInTime: 2
+  fadeOutTime: 2
+  gameEnded: 0
+  preGame: 1
+  score: {fileID: 0}
+  boat: {fileID: 0}

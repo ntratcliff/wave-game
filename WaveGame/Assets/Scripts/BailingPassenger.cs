@@ -12,6 +12,7 @@ public class BailingPassenger : MonoBehaviour
     public float torqueMax = 200;
     Rigidbody2D body;
     AudioSource audio;
+    public AudioClip[] screams;
 
     // Use this for initialization
     void Start ()
@@ -33,7 +34,16 @@ public class BailingPassenger : MonoBehaviour
         body.angularVelocity = 0;
         body.AddForce(new Vector2(Random.Range(xMin, xMax), Random.Range(yMin, yMax)));
         body.AddTorque(Random.Range(torqueMin, torqueMax));
-        audio.PlayOneShot(audio.clip);
+        int randIndex = (int)Random.Range(0.0f, 2.0f);
+        audio.PlayOneShot(screams[randIndex]);
         //Debug.Log("Time to bail!");
+    }
+
+    public void Board()
+    {
+        body.gravityScale = 0;
+        body.velocity = Vector3.zero;
+        body.angularVelocity = 0;
+        body.rotation = transform.parent.rotation.eulerAngles.z;
     }
 }

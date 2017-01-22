@@ -18,7 +18,8 @@ public class BoatScript : MonoBehaviour
     [SerializeField]
     float deathTilt = 30;
     [SerializeField]
-    int lives = 3;
+    int startingLives = 6;
+    int lives;
     [SerializeField]
     float immunityFrames = 7;
     float immunityTimeLeft = 0;
@@ -49,13 +50,23 @@ public class BoatScript : MonoBehaviour
         }
     }
 
+    void Awake()
+    {
+        passengers = new Queue<GameObject>();
+
+        for (int i = 0; i < startingLives; i++)
+        {
+            GameObject person = Instantiate(PersonPrefab);
+            passengers.Enqueue(person);
+        }
+    }
+
     // Use this for initialization
     void Start ()
     {
         index = wave.Positions.Length / 2;
         transform.position = wave.Positions[index];
         lastPos = transform.position;
-        passengers = new Queue<GameObject>();
 
         //for (int i = 0; i < transform.childCount; i++)
         //{
@@ -86,24 +97,8 @@ public class BoatScript : MonoBehaviour
         //    passengers.Enqueue(newGuy);
         //}
 
-        for (int i = 0; i < lives; i++)
-        {
-            GameObject person = Instantiate(PersonPrefab);
-            person.transform.parent = transform;
-            person.transform.localPosition = PersonPrefab.transform.localPosition;
 
-            Vector3 pos = person.transform.localPosition;
-            pos.x = PersonStartX + i * PersonSpacing;
-
-            if(i >= lives / 2)
-            {
-                pos.x += MiddleSpacing;
-            }
-
-            person.transform.localPosition = pos;
-
-            passengers.Enqueue(person);
-        }
+        //ResetBoat();
 
         winningPassengers = new GameObject[numWinningPassengers];
         winningPassengersScripts = new BailingPassenger[numWinningPassengers];
@@ -165,6 +160,7 @@ public class BoatScript : MonoBehaviour
             GameObject bailingPassenger = passengers.Dequeue();
             bailingPassenger.transform.parent = null;
             bailingPassenger.GetComponent<BailingPassenger>().Bail();
+            passengers.Enqueue(bailingPassenger);
 
             if (lives <= 0)
             {
@@ -187,6 +183,33 @@ public class BoatScript : MonoBehaviour
             winningPassengersScripts[winningPassengerIndex].Bail();
             winningPassengerIndex = (winningPassengerIndex + 1) % numWinningPassengers;
             winningPassengerTimeLeft = winningPassengerCooldown;
+        }
+    }
+
+    public void ResetBoat()
+    {
+        lives = startingLives;
+
+        for (int i = 0; i < lives; i++)
+        {
+            GameObject person = passengers.Dequeue();
+            person.transform.parent = transform;
+            //person.transform.position = Vector3.zero;
+            person.GetComponent<BailingPassenger>().Board();
+
+            person.transform.localPosition = PersonPrefab.transform.localPosition;
+
+            Vector3 pos = person.transform.localPosition;
+            pos.x = PersonStartX + i * PersonSpacing;
+
+            if (i >= lives / 2)
+            {
+                pos.x += MiddleSpacing;
+            }
+
+            person.transform.localPosition = pos;
+
+            passengers.Enqueue(person);
         }
     }
 }

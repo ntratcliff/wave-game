@@ -34,11 +34,15 @@ public class GameManagerScript : MonoBehaviour {
     public GameObject startText;
     public GameObject endText;
     public GameObject scoreText;
-    public float fadeInTime = 1;
-    public float fadeOutTime = 1;
+    public float fadeInTime = 2;
+    public float fadeOutTime = 2;
+    [HideInInspector]
     public bool gameEnded = false;
+    [HideInInspector]
     public bool preGame = true;
     public Scoreboard score;
+    public BoatScript boat;
+    private bool firstLoop = true;
 
     // Use this for initialization
     void Start ()
@@ -130,6 +134,12 @@ public class GameManagerScript : MonoBehaviour {
             Debug.LogError("Forgot to add the scoreboard to the game manager");
         }
 
+        if (!boat)
+        {
+            GameObject.FindObjectOfType<BoatScript>();
+            Debug.LogError("Forgot to add the boat to the game manager");
+        }
+
         RestartGame();
     }
 
@@ -147,6 +157,21 @@ public class GameManagerScript : MonoBehaviour {
                 RestartGame();
             }
         }
+
+        if (firstLoop)
+        {
+            Vector3 startCloudsPos;
+            for (int i = 15; i < 20; i++)
+            {
+                clouds[i].GetComponent<CloudScript>().rerollScale();
+                clouds[i].GetComponent<CloudScript>().rerollHeight();
+                clouds[i].GetComponent<CloudScript>().isMoving = true;
+                startCloudsPos = clouds[i].GetComponent<CloudScript>().transform.position;
+                startCloudsPos = new Vector3(Random.Range(-4.0f, 4.0f), startCloudsPos.y, startCloudsPos.z);
+                clouds[i].GetComponent<CloudScript>().transform.position = startCloudsPos;
+            }
+        }
+        firstLoop = false;
 
         //Cloud management software
         if (cloudTimeCounter > cloudSendNextTime)
@@ -214,6 +239,7 @@ public class GameManagerScript : MonoBehaviour {
     {
         fader.FadeOut(endText, fadeOutTime);
         gameEnded = false;
+        boat.ResetBoat();
 
         timeCounter = 0;
         collCounter = 0;

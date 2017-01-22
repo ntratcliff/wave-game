@@ -11,7 +11,12 @@ public class RealTimeSky : MonoBehaviour {
     public float hours;
     public float sumTime;
     public float convertedAngle;
+    public float timeMultiplier;
 
+    public float Counter
+    {
+        get { return counter; }
+    }
     private float counter;
    // private DateTime dt;
 	// Use this for initialization
@@ -32,7 +37,7 @@ public class RealTimeSky : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        float counter = Time.deltaTime/12;
+        float counter = Time.deltaTime/12 * timeMultiplier;
         transform.eulerAngles += new Vector3(0, 0, counter);
        // transform.rotation
 
