@@ -55,12 +55,14 @@ public class GameManagerScript : MonoBehaviour {
         GameObject c3 = Instantiate(collectibleGod);
         GameObject c4 = Instantiate(collectibleGod);
         GameObject c5 = Instantiate(collectibleGod);
+        GameObject c6 = Instantiate(collectibleGod);
 
         collectibles.Add(c1);
         collectibles.Add(c2);
         collectibles.Add(c3);
         collectibles.Add(c4);
         collectibles.Add(c5);
+        collectibles.Add(c6);
 
 
         cStart = Instantiate(collectibleGod);

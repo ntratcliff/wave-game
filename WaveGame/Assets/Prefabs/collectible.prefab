@@ -157,9 +157,9 @@ MonoBehaviour:
   sfx: {fileID: 82298965237374098}
   noiseModifierRangeLow: 0.1
   noiseModifierRangeHigh: 10
-  heightMultiplier: 5
-  minHeight: -1
-  maxHeight: 0
+  heightMultiplier: 3
+  minHeight: 0
+  maxHeight: 2
   sfxPitchLow: 0.8
   sfxPitchHigh: 1.2
 --- !u!212 &212983394670231988

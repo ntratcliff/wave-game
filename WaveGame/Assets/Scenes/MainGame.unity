@@ -455,6 +455,11 @@ Prefab:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 724003658}
+    - target: {fileID: 114677934892059738, guid: e1898fdf585236b488a762743ba56287,
+        type: 2}
+      propertyPath: lowerRangeSeconds
+      value: 2.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e1898fdf585236b488a762743ba56287, type: 2}
   m_IsPrefabParent: 0
@@ -1027,6 +1032,21 @@ Prefab:
         type: 2}
       propertyPath: m_FlipY
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114563071600535770, guid: 3745487c4263eea41a547ce0b2819667,
+        type: 2}
+      propertyPath: immunityFrames
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114563071600535770, guid: 3745487c4263eea41a547ce0b2819667,
+        type: 2}
+      propertyPath: deathTilt
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 114563071600535770, guid: 3745487c4263eea41a547ce0b2819667,
+        type: 2}
+      propertyPath: startingLives
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3745487c4263eea41a547ce0b2819667, type: 2}
