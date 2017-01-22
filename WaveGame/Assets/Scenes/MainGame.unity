@@ -316,35 +316,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1953231294}
   m_Script: {fileID: 11500000, guid: 86b5e91fa3f65a94bb77cae172a64533, type: 3}
---- !u!1 &664640926 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1665163427664984, guid: 1a010debd727fb14bb5a0223e9d2c963,
-    type: 2}
-  m_PrefabInternal: {fileID: 724003657}
---- !u!114 &664640927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 664640926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 392c3fe1d9b08894aa84f338fbee5c42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Mixer: {fileID: 24100000, guid: a38f48a43a297dc4fab808e24e759cd3, type: 2}
-  Player1: {fileID: 1437668300}
-  Player2: {fileID: 582477634}
-  Water: {fileID: 32124129}
-  PanVolumeMax: 5
-  PanVolumeMin: -20
-  PanAbsoluteMin: -30
-  PlayerInputMin: 0
-  PlayerInputMax: 0.8
-  MiddleVolumeMax: 8
-  MiddleVolumeMin: -20
-  WaterMiddleMin: -2
-  WaterMiddleMax: 1
 --- !u!1001 &724003657
 Prefab:
   m_ObjectHideFlags: 0
@@ -384,16 +355,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 82441227243596742, guid: 1a010debd727fb14bb5a0223e9d2c963,
+    - target: {fileID: 114109768721490670, guid: 1a010debd727fb14bb5a0223e9d2c963,
         type: 2}
-      propertyPath: Pan2D
-      value: -0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 82741422849019110, guid: 1a010debd727fb14bb5a0223e9d2c963,
+      propertyPath: Player1
+      value: 
+      objectReference: {fileID: 1437668300}
+    - target: {fileID: 114109768721490670, guid: 1a010debd727fb14bb5a0223e9d2c963,
         type: 2}
-      propertyPath: Pan2D
-      value: 0.9
-      objectReference: {fileID: 0}
+      propertyPath: Player2
+      value: 
+      objectReference: {fileID: 582477634}
+    - target: {fileID: 114109768721490670, guid: 1a010debd727fb14bb5a0223e9d2c963,
+        type: 2}
+      propertyPath: Water
+      value: 
+      objectReference: {fileID: 32124129}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1a010debd727fb14bb5a0223e9d2c963, type: 2}
   m_IsPrefabParent: 0
